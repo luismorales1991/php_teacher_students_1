@@ -1,0 +1,53 @@
+.form-logo {
+    font-size: 48px;
+    opacity: .5;
+    width: fit-content;
+}
+
+.form-logo.dark-mode {
+    color: var(--dark-mode-white);
+}
+
+
+.form-l-contra {
+    color: var(--color-main)
+}
+
+.form-logo-container {
+    margin: 10px 0 40px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px 10px;
+}
+
+.form-logo-div {
+    width: 100px;
+    margin: auto;
+}
+
+.submit-login-container {
+    position: relative;
+    overflow: auto;
+}
+
+.submit-login-item {
+    float: right;
+}
+
+
+.submit-login-forget {
+    margin-top: 10px;
+    margin-right: 14px;
+    text-decoration: none;
+    color: var(--color-main)
+}
+
+@media screen and (max-width: 610px) {
+    .form-logo {
+        font-size: 40px;
+    }
+
+    .form-logo-container {
+        margin: 0px 0 40px;
+    }
+}

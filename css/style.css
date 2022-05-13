@@ -1,0 +1,377 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat";
+}
+
+.f-right {
+    float: right;
+}
+
+.disable {
+    display: none;
+}
+
+.disable-v {
+    visibility: hidden;
+}
+
+.logo {
+    font-family: "Quicksand";
+    display: inline-block;
+}
+
+.logo.dark-mode {
+    color: var(--dark-mode-white);
+}
+
+.logo span {
+    font-family: 'Quicksand';
+    color: var(--color-main)
+}
+
+
+.m-container {
+    margin: 0px 8%;
+}
+
+
+.navbar {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--beauty-border);
+    overflow: hidden;
+}
+
+.signin-div {
+    margin: auto;
+    margin-top: 40px;
+}
+
+.tx-center {
+    text-align: center;
+}
+
+.form-1 {
+    padding: 50px;
+    border-radius: 5px;
+    border: 1px solid var(--beauty-border);
+}
+
+.form-1.dark-mode {
+    border: 1px solid var(--dark-mode-white-2);
+}
+
+.w-fit {
+    width: fit-content;
+}
+
+.form-input-text {
+    width: 100%;
+}
+
+.form-content {
+    width: 500px;
+}
+
+.center-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    padding: 40px 0;
+}
+
+.form-element {
+    margin-top: 20px;
+}
+
+.button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .2s ease all;
+    font-size: 14px
+}
+
+.button-main {
+    background-color: var(--color-main);
+    color: white;
+}
+
+.button-main:hover {
+    background-color: var(--color-main-hover);
+}
+
+
+.form-title {
+    font-size: 30px;
+    font-family: "Quicksand";
+}
+
+.form-title.dark-mode {
+    color: var(--dark-mode-white)
+}
+
+.switch-dark-mode-label {
+    cursor: pointer;
+    color: #AAAAAA;
+    transition: color ease .2s
+}
+
+.switch-dark-mode-logo {
+    font-size: 29px !important;
+}
+
+.switch-dark-mode-logo.dark-mode {
+    color: var(--color-main);
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 2fr;
+}
+
+.switch-dark-mode-text {
+    display: inline-block;
+    transform: translateY(-7px);
+    font-size: 17px;
+}
+
+.navbar.dark-mode {
+    background-color: var(--dark-mode-bg-2);
+    border-bottom: 1px solid var(--dark-mode-white-2);
+}
+
+body.dark-mode {
+    background-color: var(--dark-mode-bg-1);
+}
+
+h5.dark-mode {
+    color: var(--dark-mode-white)
+}
+
+input[type="text"].dark-mode,
+input[type="email"].dark-mode,
+input[type="password"].dark-mode,
+input[type="number"].dark-mode,
+select.dark-mode,
+textarea.dark-mode {
+    border: 1px solid transparent;
+    background-color: var(--dark-mode-bg-3);
+    color: var(--dark-mode-white);
+}
+
+input[type="text"].dark-mode::placeholder,
+input[type="email"].dark-mode::placeholder,
+input[type="password"].dark-mode::placeholder,
+input[type="number"].dark-mode::placeholder,
+select.dark-mode::placeholder,
+textarea.dark-mode::placeholder {
+    color: var(--dark-mode-white-2);
+}
+
+input[type="text"].dark-mode:focus,
+input[type="password"].dark-mode:focus,
+input[type="email"].dark-mode:focus,
+input[type="number"].dark-mode:focus,
+select.dark-mode:focus,
+textarea.dark-mode:focus {
+    background-color: var(--dark-mode-bg-3-hover);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"],
+select,
+textarea {
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid var(--beauty-border);
+    outline: none;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus {
+    border: 1px solid var(--selected-border)
+}
+
+.a-dk {
+    transition: background-color .1s ease;
+    transition: color .1s ease;
+}
+
+.info-div {
+    z-index: 3;
+    backdrop-filter: blur(20px);
+    background-color: rgba(255, 255, 255, 0.72);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.info-div-container {
+    padding: 40px
+}
+
+.x-button-1 {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: .2s ease all;
+}
+
+.x-button-1:hover {
+    color: #aaa
+}
+
+.ov-au {
+    overflow: auto;
+}
+
+.info-nav:hover {
+    color: var(--color-main-hover);
+}
+
+.info-btn {
+    border: none;
+    border-left: 3px solid #aaa;
+    display: inline-block;
+    padding-left: 5px;
+    background-color: transparent;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.button-a {
+    text-decoration: none;
+}
+
+.button-main-cty {
+    background-color: transparent;
+    border: 1px solid var(--color-main);
+    color: var(--color-main);
+}
+
+.button-main-cty:hover {
+    border: 1px solid var(--color-main-hover);
+    color: var(--color-main-hover);
+}
+
+.button-main-cty.dark-mode {
+    border-width: 2px;
+    font-weight: bold;
+}
+
+.button-login-2 {
+    margin-right: 15px;
+}
+
+.show-password {
+    position: absolute;
+    right: 15px;
+    transform: translate(0, -50%);
+    top: 50%;
+    cursor: pointer;
+    color:rgb(150, 150, 150);
+    transition: .2s ease all;
+}
+
+.show-password.dark-mode {
+    color: white;
+}
+
+.panel-error {
+    background-color: #fdb3b3;
+    padding: 15px;
+    border: 1px solid #d63031;
+    border-radius: 5px;
+}
+
+.generate-random-data-button {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    transition: .2s ease all;
+    color: gray;
+}
+
+.generate-random-data-button:hover {
+    color: blue;
+}
+
+@media screen and (max-width: 725px) {
+    .m-container {
+        margin: auto;
+        width: 600px;
+    }
+}
+
+@media screen and (min-width: 610px) {
+    .switch-dark-mode-label:hover .switch-dark-mode-logo {
+        color: var(--color-main-hover);
+    }
+}
+
+@media screen and (max-width: 610px) {
+    .form-1.dark-mode {
+        border: none;
+    }
+
+    .form-content,
+    .m-container {
+        width: 100%;
+    }
+
+    .switch-dark-mode-text {
+        display: none;
+    }
+
+    .switch-dark-mode-logo {
+        font-size: 25px !important
+    }
+
+    .signin-div {
+        margin: unset;
+        width: 100%;
+        border: none;
+    }
+
+    .form-1 {
+        padding: 60px 7% 50px;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .form-title {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .navbar {
+        padding: 12px 7%;
+    }
+}

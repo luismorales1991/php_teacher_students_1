@@ -1,0 +1,40 @@
+.title-right-div.dark-mode {
+    color: white
+}
+
+.approved-text {
+    color: var(--green-1);
+    font-weight: bold;
+}
+
+.semi-approved-text {
+    color: var(--yellow-1);
+    font-weight: bold;
+}
+
+.not-approved-text {
+    color: var(--red-1);
+    font-weight: bold;
+}
+
+.approved-text.dark-mode {
+    color: var(--green-1);
+    font-weight: bold;
+}
+
+.semi-approved-text.dark-mode {
+    color: var(--yellow-1);
+    font-weight: bold;
+}
+
+.not-approved-text.dark-mode {
+    color: var(--red-1);
+    font-weight: bold;
+}
+
+
+@media screen and (max-width: 850px) {
+    .right-main-menu-div {
+        padding: 30px 7% 50px;
+    }
+}

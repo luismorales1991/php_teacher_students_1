@@ -1,0 +1,17 @@
+.navbar-phone {
+    display: none;
+}
+
+.navbar-phone-btn-bars {
+    font-size: 19px;
+    background: transparent;
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding: 3px 11px;
+}
+
+@media screen and (max-width: 850px) {
+    .navbar-phone {
+        display: block;
+    }
+}

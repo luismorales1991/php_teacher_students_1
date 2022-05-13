@@ -1,0 +1,99 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.7);
+    transition: background-color .2s ease;
+}
+
+.overlay-disappearing {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.modal-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.active {
+    opacity: 1;
+    animation: modal-appear .2s ease;
+}
+
+.modal {
+    display: inline-block;
+    background-color: white;
+    width: 400px;
+    opacity: 0;
+    animation: modal-disappear .1s ease;
+}
+
+.modal-body.dark-mode,
+.modal-footer.dark-mode {
+    color: white;
+    background-color: var(--dark-mode-bg-2);
+}
+
+@keyframes modal-appear {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    100% {
+        opacity: 100%;
+        transform: translateY(0);
+    }
+}
+
+@keyframes modal-disappear {
+    0% {
+        opacity: 100%;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+}
+
+.modal-header {
+    background-color: var(--color-main);
+    color: white;
+}
+
+.modal-header button {
+    color: white;
+}
+
+.modal-header {
+    padding: 14px 28px
+}
+
+.modal-footer {
+    padding: 0 28px 18px;
+}
+
+.modal-body {
+    padding: 24px 28px 15px
+}
+
+.modal-button {
+    padding: 12px 30px;
+}
+
+@media screen and (max-width: 445px) {
+    .modal {
+        width: 100%;
+    }
+
+    .modal-container {
+        padding: 0 30px;
+    }
+}

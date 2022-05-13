@@ -1,0 +1,13 @@
+:root {
+    --beauty-border:rgb(170, 170, 170);
+    --selected-border:rgb(97, 97, 97);
+    --color-main: #218c74;
+    --color-main-hover: #3da790;
+    --dark-mode-bg-1: #313131;
+    --dark-mode-bg-2: #383838;
+    --dark-mode-bg-3: rgb(77, 77, 77);
+    --dark-mode-bg-3-hover: rgb(90, 90, 90);
+    --dark-mode-main: #4bb398;
+    --dark-mode-white: #eee;
+    --dark-mode-white-2: #999;
+}

@@ -1,0 +1,15 @@
+.edit-table-item {
+    cursor: pointer;
+    transition: .1s ease all;
+}
+
+.edit-table-item:hover {
+    color: rgb(143, 143, 143)
+}
+
+@media screen and (max-width: 850px) {
+    .row-vertical {
+        display: block;
+        grid-template-columns: none;
+    }
+}
