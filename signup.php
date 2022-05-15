@@ -32,7 +32,7 @@
     <header>
         <nav class="navbar a-dk">
             <div class="m-container">
-                <h2 class="logo a-dk">Teacher<span>Students</span></h2>
+            <a style="color: black" href="index.php"><h2 class="logo a-dk">Teacher<span>Students</span></h2></a>
                 <div class="f-right">
                     <label for="switch-dark-mode-1" class="switch-dark-mode-label">
                         <span class="switch-dark-mode-text a-dk">Dark Mode</span>
@@ -67,10 +67,10 @@
                     </h2>
                 </div>
                 <h1 class="a-dk form-title">Sign Up</h1>
-                <?php if(isset($_GET["error"])) {?>
-                <div class="form-element">
-                    <div style="font-size: 0.9rem" class="panel-error"><?= $_GET["error"] ?></div>    
-                </div>
+                <?php if (isset($_GET["error"])) { ?>
+                    <div class="form-element">
+                        <div style="font-size: 0.9rem" class="a-dk panel-error"><?= $_GET["error"] ?></div>
+                    </div>
                 <?php  } ?>
                 <div class="form-element">
                     <h5 class="a-dk">Username</h5>
@@ -115,16 +115,21 @@
                     <input required placeholder="example@domain.com" class="a-dk form-input-text" name="email" type="email" />
                 </div>
                 <div class="form-element">
-                    <h5 class="a-dk">Phone</h5><button id="generate-phone-btn" class="generate-random-data-button" type="button"># Generate Random</button>
+                    <h5 class="a-dk">Phone</h5><button id="generate-phone-btn" class="generate-random-data-button a-dk button-main-cty" type="button"># Generate Random</button>
                     <input required placeholder="+1 (xxx) xxx-xxxx" id="input-phone" name="phone" class="a-dk form-input-text" type="text" />
                 </div>
+
+                <hr id="dividor-login">
                 <div class="form-element submit-login-container">
                     <button class="submit-login-item button button-main" name="submit" type="submit">Sign Up</button>
-                    <a class="submit-login-forget submit-login-item" href="index.php">I already have an account</a>
+                    <a class="a-dk button-login-2 submit-login-item button button-a button-main-cty" href="index.php">I already have an account</a>
                 </div>
         </form>
         </div>
     </main>
+    <span style="opacity: 0" class="material-icons">
+        dark_mode
+    </span>
 
     <script src="./node_modules/cleave.js/dist/cleave.min.js"></script>
     <script src="./node_modules/cleave.js/dist/addons/cleave-phone.us.js"></script>

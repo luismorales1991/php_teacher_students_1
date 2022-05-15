@@ -42,7 +42,28 @@
     color: var(--color-main)
 }
 
+#dividor-login {
+    display: none;
+    margin: 15px 0
+}
+
 @media screen and (max-width: 610px) {
+    .submit-login-container {
+        overflow: unset;
+    }
+
+    #dividor-login {
+        display: block;
+    }
+
+    .submit-login-item {
+        display: block;
+        width: 100%;
+        float: none;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
     .form-logo {
         font-size: 40px;
     }

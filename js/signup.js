@@ -24,11 +24,11 @@ var cleave = new Cleave('#input-phone', {
 document.getElementById("generate-phone-btn").addEventListener("click", function () {
     var partnumber = "";
     for (let i = 0; i < 9; i++) {
-        partnumber += String(Math.floor(Math.random() * (9 - 0)) + 0);
+        partnumber += String(Math.floor(Math.random() * (10 - 0)) + 0);
         if(i==1 || i==4) {
             partnumber += " ";
         }
     }
-    let newnumber = String(Math.floor(Math.random() * (9 - 1)) + 1) + partnumber;
+    let newnumber = String(Math.floor(Math.random() * (10 - 1)) + 1) + partnumber;
     this.nextElementSibling.value = newnumber;
 })

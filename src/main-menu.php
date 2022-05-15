@@ -17,8 +17,7 @@ include("./layout/modals.php");
     </div>
     <div class="right-main-menu-div a-dk">
         <?php
-        include("./layout/search.php");
-        //include("./layout/my-students.php");
+        include("./layout/my-students.php");
         ?>
     </div>
 </div>

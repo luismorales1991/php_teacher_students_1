@@ -280,6 +280,7 @@ input[type=number] {
 }
 
 .button-main-cty.dark-mode {
+    background-color: rgb(41, 41, 41);
     border-width: 2px;
     font-weight: bold;
 }
@@ -294,7 +295,7 @@ input[type=number] {
     transform: translate(0, -50%);
     top: 50%;
     cursor: pointer;
-    color:rgb(150, 150, 150);
+    color: rgb(150, 150, 150);
     transition: .2s ease all;
 }
 
@@ -309,17 +310,21 @@ input[type=number] {
     border-radius: 5px;
 }
 
-.generate-random-data-button {
-    background-color: transparent;
-    cursor: pointer;
-    border: none;
-    transition: .2s ease all;
-    color: gray;
+.panel-error.dark-mode {
+    background-color: #7d2020;
+    color: white;
 }
 
-.generate-random-data-button:hover {
-    color: blue;
+.generate-random-data-button {
+    cursor: pointer;
+
+    transition: .2s ease all;
+    color: var(--color-main);
+    padding: 9px;
+    border-radius: 5px;
+    margin: 5px 0 10px;
 }
+
 
 @media screen and (max-width: 725px) {
     .m-container {

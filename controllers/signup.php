@@ -1,99 +1,131 @@
 <?php
-    if(!isset($_POST["submit"])) {
-        header("Location: ../signup.php");
-    }
+if (!isset($_POST["submit"])) {
+    header("Location: ../signup.php");
+}
 
-    include_once "../includes/db.inc.php";
+include_once "../includes/db.inc.php";
 
-    $user = htmlentities($_POST["username"]);
-    $pwd = htmlentities($_POST["pwd"]);
-    $c_pwd = htmlentities($_POST["c-pwd"]);
-    $role = htmlentities($_POST["role"]);
-    $gender = htmlentities($_POST["gender"]);
-    $email = htmlentities($_POST["email"]);
-    $phone = str_replace(" ", "", htmlentities($_POST["phone"]));
+$user = str_replace(" ", "", htmlentities($_POST["username"]));
+$pwd = str_replace(" ", "", htmlentities($_POST["pwd"]));
+$c_pwd = str_replace(" ", "", htmlentities($_POST["c-pwd"]));
+$role = htmlentities($_POST["role"]);
+$gender = htmlentities($_POST["gender"]);
+$email = str_replace(" ", "", htmlentities($_POST["email"]));
+$phone = str_replace(" ", "", htmlentities($_POST["phone"]));
 
-    if(empty($user) || (empty($pwd)) || (empty($c_pwd)) 
-    || (empty($role)) || (empty($gender)) || (empty($email)) 
-    || (empty($phone))) {
-        header("Location: ../signup.php?error=You must fill all the boxes");
-    }
+$verify = true;
+$verify_2 = true;
+$error_name = "";
+$error_name_2 = "";
 
-    if(!preg_match("/^[a-zA-Z0-9]*$/", $role) || 
+if (
+    empty($user) || (empty($pwd)) || (empty($c_pwd))
+    || (empty($role)) || (empty($gender)) || (empty($email))
+    || (empty($phone))
+) {
+    $error_name = "You must fill all the boxes";
+    $verify = false;
+}
+
+if (
+    !preg_match("/^[a-zA-Z0-9]*$/", $role) ||
     !preg_match("/^[a-zA-Z0-9]*$/", $gender) ||
-    !preg_match("/^[0-9]*$/", $phone)) {
-        header("Location: ../signup.php?error=Invalid characters");
-    }
+    !preg_match("/^[0-9]*$/", $phone)
+) {
+    $error_name = "Invalid characters";
+    $verify = false;
+}
 
-    if(strlen($user) < 4 || strlen($user) > 16) {
-        header("Location: ../signup.php?error=The username must contain 4 to 30 characters");
-    }
+if (strlen($user) < 4 || strlen($user) > 16) {
+    $error_name = "The username must contain 4 to 16 characters";
+    $verify = false;
+}
 
-    if(strlen($pwd) < 4 || strlen($pwd) > 30) {
-        header("Location: ../signup.php?error=The password must contain 4 to 30 characters");
-    }
+if (strlen($pwd) < 4 || strlen($pwd) > 30) {
+    $error_name = "The username must contain 4 to 30 characters";
+    $verify = false;
+}
 
-    if($pwd !== $c_pwd) {
-        header("Location: ../signup.php?error=Passwords don't match");
-    }
+if ($pwd !== $c_pwd) {
+    header("Location: ../signup.php?error=Passwords don't match");
+    $verify = false;
+}
 
-    if ($role !== "student") {
-        if($role !== "teacher") {
-            header("Location: ../signup.php?error=An error occurred while uploading the information");
+if ($role !== "student") {
+    if ($role !== "teacher") {
+        $error_name = "An error occurred while uploading the information";
+        $verify = false;
+    }
+}
+
+if ($gender !== "male") {
+    if ($gender !== "female") {
+        if ($gender !== "other") {
+            $error_name = "An error occurred while uploading the information";
+            $verify = false;
         }
     }
+}
 
-    if ($gender !== "male") {
-        if($gender !== "female") {
-            if($gender !== "other") {
-                header("Location: ../signup.php?error=An error occurred while uploading the information");
-            }
-        }
-    }
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $error_name = "The email is invalid";
+    $verify = false;
+}
 
-    if(!filter_var($email,FILTER_VALIDATE_EMAIL)) {
-        header("Location: ../signup.php?error=The email is invalid");
-    }
+if (strlen($email) > 30) {
+    $error_name = "The email address is too long";
+    $verify = false;
+}
 
-    if(strlen($email) > 30) {
-        header("Location: ../signup.php?error=The email address is too long");
-    }
+if (strlen($phone) !== 10) {
+    $error_name = "The phone number is invalid";
+    $verify = false;
+}
 
-    if(strlen($phone) !== 10) {
-        header("Location: ../signup.php?error=The phone number is invalid");
-    }
+if ($verify === false) {
+    header("Location: ../signup.php?error=$error_name");
+} else if ($verify === true) {
 
     $stmt = $conn->prepare("call check_duplicated_username(?)");
 
-    $stmt->bind_param("s",$user);
+    $stmt->bind_param("s", $user);
 
     $stmt->execute();
     $result = $stmt->get_result();
-    if($result->num_rows > 0) {
-        header("Location: ../signup.php?error=The username already exists");
+
+    if ($result->num_rows > 0) {
+        $verify_2 = false;
+        $error_name_2 = "The username already exists";
     }
 
     $stmt->close();
 
     $stmt = $conn->prepare("call check_duplicated_email(?)");
 
-    $stmt->bind_param("s",$email);
+    $stmt->bind_param("s", $email);
 
     $stmt->execute();
     $result = $stmt->get_result();
-    if($result->num_rows > 0) {
-        header("Location: ../signup.php?error=The email is already used");
+    if ($result->num_rows > 0) {
+        $verify_2 = false;
+        $error_name_2 = "The email is already used";
     }
 
     $stmt->close();
 
-    $stmt = $conn->prepare("call signup(?,?,?,?,?,?)");
+    if ($verify_2 = false) {
+        header("Location: ../signup.php?error=$verify_2");
+    } else if ($verify_2 = true) {
+        $stmt = $conn->prepare("call signup(?,?,?,?,?,?)");
 
-    $stmt->bind_param("ssssss",$user,$pwd,$email,$phone,$role,$gender);
+        $stmt->bind_param("ssssss", $user, $pwd, $email, $phone, $role, $gender);
 
-    if($stmt->execute()) {
-        header("Location: ../signup.php?error=User Registered");
+        if ($stmt->execute()) {
+            header("Location: ../signup.php?error=User Registered");
+        } else {
+            echo "500";
+        }
+
+        $stmt->close();
     }
-
-    $stmt->close();
-?>
+}

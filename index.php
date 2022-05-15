@@ -31,7 +31,7 @@
     <header>
         <nav class="navbar a-dk">
             <div class="m-container">
-                <h2 class="logo a-dk">Teacher<span>Students</span></h2>
+                <a style="color: black" href="index.php"><h2 class="logo a-dk">Teacher<span>Students</span></h2></a>
                 <div class="f-right">
                     <label for="switch-dark-mode-1" class="switch-dark-mode-label">
                         <span class="switch-dark-mode-text a-dk">Dark Mode</span>
@@ -47,7 +47,7 @@
     </header>
 
     <main>
-        <form class="form-1 a-dk w-fit center-flex signin-div" method="post">
+        <form class="form-1 a-dk w-fit center-flex signin-div" action="./controllers/signin.php" method="post">
             <div class="form-content">
                 <div class="form-logo-div">
                     <h2 class="form-logo-container tx-center">
@@ -68,19 +68,23 @@
                 <h1 class="a-dk form-title">Sign In</h1>
                 <div class="form-element">
                     <h5 class="a-dk">Username</h5>
-                    <input placeholder="Username" class="a-dk form-input-text" type="text" />
+                    <input required="required" name="username" placeholder="Username" class="a-dk form-input-text" type="text" />
                 </div>
                 <div class="form-element">
                     <h5 class="a-dk">Password</h5>
-                    <input placeholder="Password" class="a-dk form-input-text" type="password" />
+                    <input required="required" name="pwd" placeholder="Password" class="a-dk form-input-text" type="password" />
                 </div>
+
+                <hr id="dividor-login">
                 <div class="form-element submit-login-container">
-                    <input class="submit-login-item button button-main" type="submit" value="Sign In">
+                <button class="submit-login-item button button-main" name="submit" type="submit">Sign In</button>
                     <a class="a-dk button-login-2 submit-login-item button button-a button-main-cty" href="signup.php">Sign Up</a>
                 </div>
         </form>
         </div>
-        <a href="./src/main-menu.php">Main MENU</a>
+        <span style="opacity: 0" class="material-icons">
+            dark_mode
+        </span>
     </main>
     <script src="./js/index.js"></script>
 </body>
