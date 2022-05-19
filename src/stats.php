@@ -22,7 +22,7 @@ while ($row = $result->fetch_assoc()) {
     $role = $row["role"];
 }
 
-$stmt->close();
+$conn->close();
 
 include("./layout/header.php");
 
@@ -39,13 +39,10 @@ include("./layout/modals.php");
         ?>
     </div>
     <div class="right-main-menu-div a-dk">
-        <?php if ($role == "student") {
-            include("./layout/my-grades.php");
-        } else if ($role == "teacher") {
-            include("./layout/my-students.php");
-        } else {
-            echo "Error";
-        } ?>
+        <?php
+        include("./layout/stats.php");
+        ?>
+
     </div>
 </div>
 

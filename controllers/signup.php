@@ -121,7 +121,26 @@ if ($verify === false) {
         $stmt->bind_param("ssssss", $user, $pwd, $email, $phone, $role, $gender);
 
         if ($stmt->execute()) {
-            header("Location: ../signup.php?error=User Registered");
+            $stmt->close();
+            $stmt = $conn->prepare("call signin(?,?)");
+
+            $stmt->bind_param("ss", $user, $pwd);
+
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result->num_rows < 1) {
+                header("Location: ../index.php?error=Username or password incorrect");
+            } else if ($result->num_rows == 1) {
+                $id = "";
+                while ($row = $result->fetch_assoc()) {
+                    $id = $row["id"];
+                }
+                session_start();
+                $_SESSION["access-token"] = $id;
+                header("Location: ../src/main-menu.php");
+            }
+            $stmt->close();
         } else {
             echo "500";
         }

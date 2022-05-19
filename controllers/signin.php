@@ -43,8 +43,8 @@ if ($verify === false) {
             $id = $row["id"];
         }
         session_start();
-        $_SESSION["userid"] = $user[0]["users_id"];
-        header("Location: ../index.php?error=User logged&id=$id");
+        $_SESSION["access-token"] = $id;
+        header("Location: ../src/main-menu.php");
     }
     $stmt->close();
 

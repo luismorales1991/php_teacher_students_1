@@ -1,3 +1,10 @@
+<?php 
+    session_start();
+
+    if(isset($_SESSION["access-token"])) {
+        header("Location: ./src/main-menu.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -10,7 +17,6 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/login.css">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js" integrity="sha512-KZmyTq3PLx9EZl0RHShHQuXtrvdJ+m35tuOiwlcZfs/rE7NZv29ygNA8SFCkMXTnYZQK2OX0Gm2qKGfvWEtRXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://kit.fontawesome.com/0e82dbf83d.js" crossorigin="anonymous"></script>
 </head>
 
@@ -34,13 +40,12 @@
             <div class="m-container">
             <a style="color: black" href="index.php"><h2 class="logo a-dk">Teacher<span>Students</span></h2></a>
                 <div class="f-right">
-                    <label for="switch-dark-mode-1" class="switch-dark-mode-label">
+                    <button id="switch-dark-mode-1" class="switch-dark-button switch-dark-mode-label">
                         <span class="switch-dark-mode-text a-dk">Dark Mode</span>
                         <span id="switch-dark-mode-logo-1" class="switch-dark-mode-logo material-icons-outlined a-dk">
                             dark_mode
                         </span>
-                        <input type="checkbox" class="disable" style="padding: none" id="switch-dark-mode-1" />
-                    </label>
+                    </button>
                     <button class="info-btn" id="info-button-1"><span class="info-nav switch-dark-mode-label switch-dark-mode-logo material-icons-outlined">info</span></button>
                 </div>
             </div>

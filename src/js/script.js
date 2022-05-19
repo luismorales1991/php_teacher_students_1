@@ -3,6 +3,14 @@ var x_button = document.querySelectorAll(".x-button");
 var grade_number = document.querySelectorAll(".grade-number");
 var student_table_name = document.querySelectorAll(".student-table-name");
 
+window.onload = function () {
+    if (localStorage.getItem("dark-mode") == null) {
+        localStorage.setItem("dark-mode", false);
+    } else if (localStorage.getItem("dark-mode") == "true") {
+        darkMode();
+    }
+}
+
 x_button.forEach(x => {
     x.addEventListener("click", function () {
         let formdiv = x.parentElement.parentElement;
@@ -33,6 +41,11 @@ function darkMode() {
 }
 
 document.getElementById("dark-mode-2").addEventListener("click", function () {
+    if (localStorage.getItem("dark-mode") == "true") {
+        localStorage.setItem("dark-mode", false);
+    } else if (localStorage.getItem("dark-mode") == "false") {
+        localStorage.setItem("dark-mode", true)
+    }
     darkMode();
 });
 

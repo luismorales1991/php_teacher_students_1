@@ -116,6 +116,10 @@ main {
 .form-title.dark-mode {
     color: var(--dark-mode-white)
 }
+.switch-dark-button {
+    border: none;
+    background-color: transparent;
+}
 
 .switch-dark-mode-label {
     cursor: pointer;

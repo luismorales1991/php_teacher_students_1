@@ -1,5 +1,5 @@
 <?php
-$count = 0
+$count = 0;
 ?>
 <h2 class="title-right-div a-dk h2-title-1"><i class="fa-solid fa-table-list"></i> My Grades</h2>
 <hr style="margin-top: 10px">

@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (isset($_SESSION["access-token"])) {
+    header("Location: ./src/main-menu.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -5,7 +13,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TeacherStudents</title>
+    <title>TeacherStudents | Sign In</title>
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/login.css">
@@ -31,15 +39,16 @@
     <header>
         <nav class="navbar a-dk">
             <div class="m-container">
-                <a style="color: black" href="index.php"><h2 class="logo a-dk">Teacher<span>Students</span></h2></a>
+                <a style="color: black" href="index.php">
+                    <h2 class="logo a-dk">Teacher<span>Students</span></h2>
+                </a>
                 <div class="f-right">
-                    <label for="switch-dark-mode-1" class="switch-dark-mode-label">
+                    <button id="switch-dark-mode-1" class="switch-dark-button switch-dark-mode-label">
                         <span class="switch-dark-mode-text a-dk">Dark Mode</span>
                         <span id="switch-dark-mode-logo-1" class="switch-dark-mode-logo material-icons-outlined a-dk">
                             dark_mode
                         </span>
-                        <input type="checkbox" class="disable" style="padding: none" id="switch-dark-mode-1" />
-                    </label>
+                    </button>
                     <button class="info-btn" id="info-button-1"><span class="info-nav switch-dark-mode-label switch-dark-mode-logo material-icons-outlined">info</span></button>
                 </div>
             </div>
@@ -66,6 +75,11 @@
                     </h2>
                 </div>
                 <h1 class="a-dk form-title">Sign In</h1>
+                <?php if (isset($_GET["error"])) { ?>
+                    <div class="form-element">
+                        <div style="font-size: 0.9rem" class="a-dk panel-error"><?= $_GET["error"] ?></div>
+                    </div>
+                <?php  } ?>
                 <div class="form-element">
                     <h5 class="a-dk">Username</h5>
                     <input required="required" name="username" placeholder="Username" class="a-dk form-input-text" type="text" />
@@ -77,7 +91,7 @@
 
                 <hr id="dividor-login">
                 <div class="form-element submit-login-container">
-                <button class="submit-login-item button button-main" name="submit" type="submit">Sign In</button>
+                    <button class="submit-login-item button button-main" name="submit" type="submit">Sign In</button>
                     <a class="a-dk button-login-2 submit-login-item button button-a button-main-cty" href="signup.php">Sign Up</a>
                 </div>
         </form>
