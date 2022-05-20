@@ -20,4 +20,4 @@
     <link rel="stylesheet" href="css/my-profile.css">
     <script src="https://kit.fontawesome.com/0e82dbf83d.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="a-dk">

@@ -510,12 +510,12 @@ $stmt->close();
     </div>
 
 <?php } else if ($result->num_rows == 0) { ?>
-    <div style="text-align: center; margin-top: 20px">
-        <h2>Whoops, looks like you haven't created your course yet!</h2>
-        <span id="oops-logo" class="noselect material-icons-outlined">
+    <div style="text-align: center; margin-top: 40px">
+        <h2 style="margin-bottom: 30px">Whoops, looks like you haven't created your course yet!</h2>
+        <span style="margin-bottom: 30px" id="oops-logo" class="noselect material-icons-outlined">
             sentiment_dissatisfied
         </span>
         <br>
-        <button class="button" type="button">Create Course</button>
+        <a href="create-course.php" style="text-decoration: none;" class="button-main a-dk button" type="button">Create Course</a>
     </div>
 <?php }  ?>
