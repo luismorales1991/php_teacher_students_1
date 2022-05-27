@@ -92,13 +92,12 @@ if ($verify === false) {
 
     $stmt->execute();
     $result = $stmt->get_result();
+    $stmt->close();
 
     if ($result->num_rows > 0) {
         $verify_2 = false;
         $error_name_2 = "The username already exists";
     }
-
-    $stmt->close();
 
     $stmt = $conn->prepare("call check_duplicated_email(?)");
 
@@ -113,8 +112,8 @@ if ($verify === false) {
 
     $stmt->close();
 
-    if ($verify_2 = false) {
-        header("Location: ../signup.php?error=$verify_2");
+    if ($verify_2 == false) {
+        header("Location: ../signup.php?error=$error_name_2");
     } else if ($verify_2 = true) {
         $stmt = $conn->prepare("call signup(?,?,?,?,?,?)");
 

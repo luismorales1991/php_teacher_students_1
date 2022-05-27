@@ -39,11 +39,11 @@
     padding: 50px 0px;
 }
 
-.vertical-options:hover {
+.vertical-options:hover, .vertical-options.active {
     background-color: #0e5f4e ;
 }
 
-.vertical-options.dark-mode:hover {
+.vertical-options.dark-mode:hover, .vertical-options.active.dark-mode {
     background-color: black ;
 }
 

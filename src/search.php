@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+$active_vertical = 2;
+$html_title = "Search";
+
 include("../includes/db.inc.php");
 
 if (!isset($_SESSION["access-token"])) {
@@ -22,7 +25,9 @@ while ($row = $result->fetch_assoc()) {
     $role = $row["role"];
 }
 
-$conn->close();
+$stmt->close();
+
+
 
 include("./layout/header.php");
 

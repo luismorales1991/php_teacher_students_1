@@ -18,13 +18,20 @@
 
         <div class="upper-options" style="margin-top: 20px">
             <?php if ($role == "student") { ?>
-                <a class="vertical-options a-dk v-o-fa" href="main-menu.php"><i class="vertical-options-icon vertical-options-icon-fa fa-solid fa-table-list"></i> My Grades</a>
-                <a class="vertical-options a-dk v-o-gg" href="search.php"><span class="vertical-options-icon vertical-options-icon-gg material-icons-outlined">search</span> Search</a>
-                <a class="vertical-options a-dk v-o-fa" href="stats.php"><i class="vertical-options-icon vertical-options-icon-fa fa-solid fa-chart-pie"></i> Stats</a>
+                <a class="vertical-options <?php if ($active_vertical == 1) echo "active"; ?> a-dk v-o-fa" href="main-menu.php"><i class="vertical-options-icon vertical-options-icon-fa fa-solid fa-table-list"></i> My Grades</a>
+                <a class="vertical-options <?php if ($active_vertical == 2) echo "active"; ?> a-dk v-o-gg" href="search.php"><span class="vertical-options-icon vertical-options-icon-gg material-icons-outlined">search</span> Search</a>
+                <a class="vertical-options <?php if ($active_vertical == 3) echo "active"; ?> a-dk v-o-fa" href="stats.php"><i class="vertical-options-icon vertical-options-icon-fa fa-solid fa-chart-pie"></i> Stats</a>
             <?php } else if ($role == "teacher") { ?>
-                <a class="vertical-options a-dk v-o-fa" href="main-menu.php"><i class="vertical-options-icon vertical-options-icon-fa fa-solid fa-people-group"></i> My Students</a>
-                <a class="vertical-options a-dk v-o-gg" href="inbox.php"><span class="vertical-options-icon vertical-options-icon-gg material-icons-outlined">inbox</span> Inbox</a>
-                <a class="vertical-options a-dk v-o-fa" href="stats.php"><i class="vertical-options-icon vertical-options-icon-fa fa-solid fa-chart-pie"></i> Stats</a>
+                <a class="vertical-options <?php if ($active_vertical == 1) echo "active"; ?> a-dk v-o-fa" href="main-menu.php"><i class="vertical-options-icon vertical-options-icon-fa fa-solid fa-people-group"></i> My Students</a>
+                <a class="vertical-options <?php if ($active_vertical == 4) echo "active"; ?> a-dk v-o-gg" href="inbox.php">
+                    <div style="float: left">
+                        <span class="vertical-options-icon vertical-options-icon-gg material-icons-outlined">inbox</span>
+                    </div>
+                    <span style="float: left; transform: translate(5px,9px)">
+                        Inbox
+                    </span>
+                </a>
+                <a class="vertical-options <?php if ($active_vertical == 3) echo "active"; ?> a-dk v-o-fa" href="stats.php"><i class="vertical-options-icon vertical-options-icon-fa fa-solid fa-chart-pie"></i> Stats</a>
             <?php } else { ?>
                 error
             <?php } ?>
@@ -34,7 +41,7 @@
         <div class="lower-options">
             <a class="vertical-options a-dk v-o-gg" href="#"><span class="vertical-options-icon vertical-options-icon-gg material-icons-outlined">account_box</span> My Profile</a>
             <a class="vertical-options a-dk v-o-gg" href="#"><span class="vertical-options-icon vertical-options-icon-gg material-icons-outlined">info</span> About</a>
-            <a class="vertical-options a-dk v-o-fa" href="./controllers/logout.php"><i class="vertical-options-icon vertical-options-icon-fa fa-solid fa-arrow-right-from-bracket"></i> Log out</a>
+            <a class="vertical-options a-dk v-o-fa" href="./controllers/logout.php"><i style="transform: rotate(180deg)" class="vertical-options-icon vertical-options-icon-fa fa-solid fa-arrow-right-from-bracket"></i> Log out</a>
         </div>
     </div>
 

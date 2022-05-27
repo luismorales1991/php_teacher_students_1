@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+$active_vertical = 1;
+
 include("../includes/db.inc.php");
 
 if (!isset($_SESSION["access-token"])) {
@@ -23,6 +25,8 @@ while ($row = $result->fetch_assoc()) {
 }
 
 $stmt->close();
+
+$html_title = "Main Menu";
 
 include("./layout/header.php");
 

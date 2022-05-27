@@ -329,6 +329,14 @@ input[type=number] {
     margin: 5px 0 10px;
 }
 
+.text-input-dark-1 {
+    background-color: rgba(120,120,120);
+}
+
+.text-input-dark-1::placeholder {
+    color: white
+}
+
 
 @media screen and (max-width: 725px) {
     .m-container {

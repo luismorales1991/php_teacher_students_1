@@ -13,7 +13,11 @@ $stmt->close();
 <h2 class="title-right-div a-dk h2-title-1"><i class="fa-solid fa-people-group"></i> My Students</h2>
 <hr style="margin-top: 10px">
 <?php if ($result->num_rows > 0) { ?>
-    <p class="all-p-1 a-dk" style="margin-top: 10px">In order to edit a note, click on the note you want to change. If you want to unassing a student, click on the student name.</p>
+    <div style="text-align: center; margin-top: 40px">
+        <h2 class="a-dk to-white" style="margin-bottom: 30px">Wait for your new students! You have to accept them, check your inbox.</h2>
+        <i style="display: block" id="oops-logo" class="a-dk to-white noselect fa-solid fa-clipboard-question"></i>
+    </div>
+    <!-- <p class="all-p-1 a-dk" style="margin-top: 10px">In order to edit a note, click on the note you want to change. If you want to unassing a student, click on the student name.</p>
     <br>
     <div style="margin-top: 10px">
         <div class="all-p-1 a-dk" style="margin-bottom: 5px">
@@ -507,12 +511,12 @@ $stmt->close();
                 </tr>
             </tbody>
         </table>
-    </div>
+    </div> -->
 
 <?php } else if ($result->num_rows == 0) { ?>
     <div style="text-align: center; margin-top: 40px">
-        <h2 style="margin-bottom: 30px">Whoops, looks like you haven't created your course yet!</h2>
-        <span style="margin-bottom: 30px" id="oops-logo" class="noselect material-icons-outlined">
+        <h2 class="a-dk to-white" style="margin-bottom: 30px">Whoops, looks like you haven't created your course yet!</h2>
+        <span style="margin-bottom: 30px" id="oops-logo" class="noselect a-dk to-white material-symbols-outlined">
             sentiment_dissatisfied
         </span>
         <br>

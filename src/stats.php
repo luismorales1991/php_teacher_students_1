@@ -3,6 +3,9 @@ session_start();
 
 include("../includes/db.inc.php");
 
+$active_vertical = 3;
+$html_title = "Stadistics";
+
 if (!isset($_SESSION["access-token"])) {
     header("Location: ../index.php");
 }

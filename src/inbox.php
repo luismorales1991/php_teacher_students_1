@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+$active_vertical = 4;
+$html_title = "Inbox";
+
 include("../includes/db.inc.php");
 
 if (!isset($_SESSION["access-token"])) {
