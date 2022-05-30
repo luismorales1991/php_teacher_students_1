@@ -64,7 +64,7 @@ function generateRandomTitle() {
         "Spanish A2",
         
         "French B2",
-        "How to draw a almost-perfect face",
+        "How to draw an almost-perfect face",
         "How to cook a turkey",
 
         "How to sell anything",

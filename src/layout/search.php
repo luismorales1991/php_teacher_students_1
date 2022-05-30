@@ -8,6 +8,7 @@ $result = $stmt->get_result();
 
 $courses = [];
 $inbox = [];
+$ass = [];
 
 $username = "";
 $role = "";
@@ -20,7 +21,8 @@ while ($row = $result->fetch_assoc()) {
         "description" => $row["description"],
         "limit" => $row["limit"],
         "banner" => $row["banner"],
-        "username" => $row["username"]
+        "username" => $row["username"],
+        "occupancy" => $row["occupancy"]
     ];
     $count++;
 }
@@ -41,6 +43,20 @@ while ($row = $result->fetch_assoc()) {
 
 $stmt->close();
 
+$stmt = $conn->prepare("call get_assignment_from_student(?)");
+
+$stmt->bind_param("s", $_SESSION["access-token"]);
+
+$stmt->execute();
+$result = $stmt->get_result();
+
+$count = 0;
+while ($row = $result->fetch_assoc()) {
+    $ass[$count] = $row["course_id"];
+    $count++;
+}
+
+$stmt->close();
 ?>
 <h2 class="title-right-div a-dk h2-title-1"><span class="icon-title-h2-1 material-icons-outlined">search</span> Search</h2>
 <hr style="margin-top: 10px">
@@ -57,14 +73,26 @@ $stmt->close();
     <div class="flex-layout-3-1 grid-gap-1">
 
         <?php
-        foreach ($courses as $x) {  $requested = false;?>
+        foreach ($courses as $x) {
+            $requested = false;
+            $assigned = false;
+        ?>
             <div class="box-cont-1">
                 <div>
                     <img src="<?= $x["banner"] ?>" style="width: 100%" />
                 </div>
                 <div style="padding: 20px">
+                    <?php foreach ($ass as $z) { ?>
+                        <?php if ($x["id"] == $z) { ?>
+                            <div style="margin-bottom: 10px">
+                                <span class="to-white a-dk"><i style="color: #6ab04c" class="fa-solid fa-check"></i> You are assigned</span>
+                            </div>
+                        <?php $assigned = true;
+                        } ?>
+                    <?php } ?>
+
                     <div class="to-white a-dk" style="margin-bottom: 10px">
-                        1/<?= $x["limit"] ?><br>
+                        <?= $x["occupancy"] ?>/<?= $x["limit"] ?><br />
                     </div>
                     <div>
                         <h3 class="to-white a-dk" style="margin-bottom: 10px"><?= $x["name"] ?></h3>
@@ -76,7 +104,7 @@ $stmt->close();
                     <div style="margin-bottom: 10px">
                         <button class="view-more to-white a-dk"><i class="fa-solid fa-angle-down"></i> View More</button>
                     </div>
-                    <form action="controllers/create-inbox.php" method="post">
+                    <form action="controllers/<?php echo ($assigned === true) ? "delete-assign.php" : "create-inbox.php" ?>" method="post">
                         <input type="hidden" name="id" value="<?= $x["id"] ?>">
                         <div class="tx-center">
                             <?php foreach ($inbox as $y) { ?>
@@ -84,10 +112,12 @@ $stmt->close();
                                     $requested = true;
                                 } ?>
                             <?php } ?>
-                            <?php if ($requested == false) { ?>
+                            <?php if ($assigned === true) { ?>
+                                <button name="submit" type="submit" class="button reject-button">Unassing</button>
+                            <?php } elseif ($requested === false) { ?>
                                 <input type="hidden" name="request" value="true">
                                 <button name="submit" type="submit" class="button accept-button">Request</button>
-                            <?php } elseif ($requested == true) { ?>
+                            <?php } elseif ($requested === true) { ?>
                                 <input type="hidden" name="request" value="false">
                                 <button name="submit" type="submit" class="a-dk button done-button">Requested</button>
                             <?php } ?>

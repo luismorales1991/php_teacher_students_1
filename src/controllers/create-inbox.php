@@ -25,15 +25,23 @@ while ($row = $result->fetch_assoc()) {
 
 $stmt->close();
 
+$stmt = $conn->prepare("call check_duplicated_assignment(?,?)");
+
+$stmt->bind_param("ss", $_SESSION["access-token"], $_POST["id"]);
+
+$stmt->execute();
+$result = $stmt->get_result();
+$stmt->close();
+
+if($result->num_rows > 0) {
+    $error = "Error 500";
+}
+
 if ($role != "student") {
     $error = "Error 403";
 }
 
-if (empty($_POST["id"])) {
-    $error = "Error 400";
-}
-
-if (empty($_POST["request"])) {
+if (empty($_POST["id"]) || empty($_POST["request"])) {
     $error = "Error 400";
 }
 
@@ -47,7 +55,7 @@ if (!empty($error)) {
     $stmt->execute();
     $result = $stmt->get_result();
     $stmt->close();
-    
+
     if ($_POST["request"] === "true") {
         if ($result->num_rows == 1) {
             header("Location: ../search.php?error=1-400");
@@ -57,7 +65,7 @@ if (!empty($error)) {
             $stmt->bind_param("ss", $_SESSION["access-token"], $_POST["id"]);
 
             if ($stmt->execute()) {
-                header("Location: ../search.php?error=99");
+                header("Location: ../search.php");
             }
         } else {
             header("Location: ../search.php?error=2-500");
@@ -71,7 +79,7 @@ if (!empty($error)) {
             $stmt->bind_param("ss", $_SESSION["access-token"], $_POST["id"]);
 
             if ($stmt->execute()) {
-                header("Location: ../search.php?error=98");
+                header("Location: ../search.php");
             }
         } else {
             header("Location: ../search.php?error=4-400");

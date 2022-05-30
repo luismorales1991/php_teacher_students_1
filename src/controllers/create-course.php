@@ -18,7 +18,6 @@ $error = "";
 
 if (empty($title) || empty($limit) || empty($description)) {
     $error = "You must fill all the boxes";
-    # header("Location: ../create-course.php?error");
 }
 
 if (strlen($title) > 60) {

@@ -1,10 +1,18 @@
 .edit-table-item {
     cursor: pointer;
-    transition: .1s ease all;
+    transition: .2s ease all;
 }
 
 .edit-table-item:hover {
-    color: rgb(143, 143, 143)
+    color: rgb(59, 59, 59)
+}
+
+.edit-table-item.dark-mode {
+    color: white
+}
+
+.edit-table-item.dark-mode:hover {
+    color: rgb(204, 204, 204)
 }
 
 @media screen and (max-width: 850px) {

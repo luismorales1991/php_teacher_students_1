@@ -27,8 +27,6 @@ while ($row = $result->fetch_assoc()) {
 
 $stmt->close();
 
-
-
 include("./layout/header.php");
 
 include("./layout/modals.php");

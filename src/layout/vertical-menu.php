@@ -1,3 +1,18 @@
+<?php
+$has_inbox = false;
+if (isset($conn) && $role == "teacher") {
+    $stmt = $conn->prepare("call get_inbox_from_teacher(?)");
+
+    $stmt->bind_param("s", $_SESSION["access-token"]);
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result->num_rows>0) {
+        $has_inbox = true;
+    }
+    $stmt->close();
+}
+?>
 <div class="vertical-main-menu-f a-dk" id="vertical-main-menu">
     <div id="x-button-vertical-menu-div">
         <button id="x-button-vertical-menu" class="x-button-2" type="button"><i class="fa-solid fa-xmark"></i></button>
@@ -24,8 +39,11 @@
             <?php } else if ($role == "teacher") { ?>
                 <a class="vertical-options <?php if ($active_vertical == 1) echo "active"; ?> a-dk v-o-fa" href="main-menu.php"><i class="vertical-options-icon vertical-options-icon-fa fa-solid fa-people-group"></i> My Students</a>
                 <a class="vertical-options <?php if ($active_vertical == 4) echo "active"; ?> a-dk v-o-gg" href="inbox.php">
-                    <div style="float: left">
+                    <div style="float: left; position:relative">
                         <span class="vertical-options-icon vertical-options-icon-gg material-icons-outlined">inbox</span>
+                        <?php if ($active_vertical != 4 && $has_inbox === true) {?>
+                            <div class="center-flex circle-notification-1 circle-notification"><?= $result->num_rows ?></div>
+                        <?php } ?>
                     </div>
                     <span style="float: left; transform: translate(5px,9px)">
                         Inbox

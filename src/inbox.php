@@ -25,7 +25,7 @@ while ($row = $result->fetch_assoc()) {
     $role = $row["role"];
 }
 
-$conn->close();
+$stmt->close();
 
 include("./layout/header.php");
 
