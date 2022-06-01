@@ -18,6 +18,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 while ($row = $result->fetch_assoc()) {
     $assignments[$count] = [
+        "id" => $row["id"],
         "username" => $row["username"],
         "unit1" => $row["unit1"],
         "unit2" => $row["unit2"],
@@ -39,7 +40,14 @@ $stmt->close();
             <i style="display: block" id="oops-logo" class="a-dk to-white noselect fa-solid fa-clipboard-question"></i>
         </div>
     <?php } elseif (count($assignments) > 0) { ?>
+        <?php if (isset($_GET["error"])) { ?>
+            <div class="form-element">
+                <div style="font-size: 0.9rem" class="a-dk form-content panel-error"><?= $_GET["error"] ?></div>
+            </div>
+        <?php  } ?>
         <p class="all-p-1 a-dk" style="margin-top: 10px">In order to edit a note, click on the note you want to change. If you want to unassing a student, click on the student name.</p>
+        <br>
+        <p class="all-p-1 a-dk"><b>Note:</b> In this application, when you set less than 4 grades, the average it's still calculated as an average of 4 values.</p>
         <br>
         <div style="margin-top: 10px">
             <div class="all-p-1 a-dk" style="margin-bottom: 5px">
@@ -52,7 +60,7 @@ $stmt->close();
                 <span class="not-approved-text a-dk">Not Approved</span> - the student did not passed the subject and does not have a chance to do an extraodinary exam.
             </div>
         </div>
-
+        <hr style="margin-top: 20px" />
         <div style="margin-top: 20px" class="search-div">
             <div>
                 <span style="margin-right: 7px; font-weight: bold" class="a-dk all-p-1">Search:</span>
@@ -75,37 +83,38 @@ $stmt->close();
                     <?php foreach ($assignments as $i => $x) { ?>
                         <tr class="a-dk">
                             <td class="tx-right all-p-1 all-brd-dk a-dk">
-                                <?= $i+1 ?>
+                                <?= $i + 1 ?>
                             </td>
-                            <td class="all-p-1 all-brd-dk a-dk"><a class="student-table-name edit-table-item">Sara Smith</a></td>
-                            <td class="tx-center all-p-1 all-brd-dk a-dk"><a class="grade-number a-dk edit-table-item"><?= (is_null($x["unit1"]) ? '<i class="fa-solid fa-circle-plus"></i>' : $x["unit1"]) ?></a></td>
-                            <td class="tx-center all-p-1 all-brd-dk a-dk"><a class="grade-number a-dk edit-table-item"><?= (is_null($x["unit1"]) ? '<i class="fa-solid fa-circle-plus"></i>' : $x["unit2"]) ?></a></td>
-                            <td class="tx-center all-p-1 all-brd-dk a-dk"><a class="grade-number a-dk edit-table-item"><?= (is_null($x["unit1"]) ? '<i class="fa-solid fa-circle-plus"></i>' : $x["unit3"]) ?></a></td>
-                            <td class="tx-center all-p-1 all-brd-dk a-dk"><a class="grade-number a-dk edit-table-item"><?= (is_null($x["unit1"]) ? '<i class="fa-solid fa-circle-plus"></i>' : $x["unit4"]) ?></a></td>
+                            <td class="student-name-case all-p-1 all-brd-dk a-dk"><a class="student-table-name edit-table-item"><?= $x["username"] ?></a></td>
+                            <input type="hidden" class="assignment-id" value="<?= $x["id"] ?>">
+                            <td class="tx-center all-p-1 all-brd-dk a-dk"><a class="grade-number u1 a-dk edit-table-item"><?= (is_null($x["unit1"]) ? '<i class="fa-solid fa-circle-plus"></i>' : $x["unit1"]) ?></a></td>
+                            <td class="tx-center all-p-1 all-brd-dk a-dk"><a class="grade-number u2 a-dk edit-table-item"><?= (is_null($x["unit2"]) ? '<i class="fa-solid fa-circle-plus"></i>' : $x["unit2"]) ?></a></td>
+                            <td class="tx-center all-p-1 all-brd-dk a-dk"><a class="grade-number u3 a-dk edit-table-item"><?= (is_null($x["unit3"]) ? '<i class="fa-solid fa-circle-plus"></i>' : $x["unit3"]) ?></a></td>
+                            <td class="tx-center all-p-1 all-brd-dk a-dk"><a class="grade-number u4 a-dk edit-table-item"><?= (is_null($x["unit4"]) ? '<i class="fa-solid fa-circle-plus"></i>' : $x["unit4"]) ?></a></td>
                             <?php
 
-                        if (
-                            is_null($x["unit1"]) &&
-                            is_null($x["unit2"]) &&
-                            is_null($x["unit3"]) &&
-                            is_null($x["unit4"])
-                        ) {
-                            echo '<td class="tx-center all-p-1 all-brd-dk a-dk"><span>&mdash;</span></td>';
-                        } else {
-                            $average = rand(50, 100);
-                            $approved = "";
-
-                            if ($average > 69) {
-                                $approved = "approved";
-                            } else if ($average > 59) {
-                                $approved = "semi-approved";
+                            if (
+                                is_null($x["unit1"]) &&
+                                is_null($x["unit2"]) &&
+                                is_null($x["unit3"]) &&
+                                is_null($x["unit4"])
+                            ) {
+                                echo '<td class="tx-center all-p-1 all-brd-dk a-dk"><span>&mdash;</span></td>';
                             } else {
-                                $approved = "not-approved";
-                            }
+                                $average = round((intval(is_null($x["unit1"]) ? 0 : $x["unit1"]) + intval(is_null($x["unit2"]) ? 0 : $x["unit2"]) + intval(is_null($x["unit3"]) ? 0 : $x["unit3"]) + intval(is_null($x["unit4"]) ? 0 : $x["unit4"])) / 4);
+                                $approved = "";
 
-                            echo '<td class="tx-center average-num all-p-1 all-brd-dk ' . $approved . ' a-dk"><b>' . $average . '</b></td>';
-                        }
-                        ?>
+                                if ($average > 69) {
+                                    $approved = "approved";
+                                } else if ($average > 59) {
+                                    $approved = "semi-approved";
+                                } else {
+                                    $approved = "not-approved";
+                                }
+
+                                echo '<td class="tx-center average-num all-p-1 all-brd-dk ' . $approved . ' a-dk"><b>' . $average . '</b></td>';
+                            }
+                            ?>
                         </tr>
                     <?php } ?>
                 </tbody>

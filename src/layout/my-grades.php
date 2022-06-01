@@ -29,7 +29,8 @@ $stmt->close();
 <?php if (count($assignments) > 0) { ?>
     <p class="all-p-1 a-dk" style="margin-top: 10px">These are your current courses. The grades are set by your teacher. If you want to unassing from a course, click on "Unassing".</p>
     <br>
-
+    <p class="all-p-1 a-dk"><b>Note:</b> In this application, if you have less than 4 grades, the average it's still calculated as an average of 4 values.</p>
+    <br>
     <div style="margin-top: 20px" class="table-div">
         <table class="table-1">
             <tr>
@@ -65,7 +66,7 @@ $stmt->close();
                         ) {
                             echo '<td class="tx-center all-p-1 all-brd-dk a-dk"><span>&mdash;</span></td>';
                         } else {
-                            $average = rand(50, 100);
+                            $average = round((intval(is_null($x["unit1"]) ? 0 : $x["unit1"]) + intval(is_null($x["unit2"]) ? 0 : $x["unit2"]) + intval(is_null($x["unit3"]) ? 0 : $x["unit3"]) + intval(is_null($x["unit4"]) ? 0 : $x["unit4"])) / 4);
                             $approved = "";
 
                             if ($average > 69) {
