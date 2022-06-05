@@ -65,6 +65,10 @@
     width: 500px;
 }
 
+.flexbox-1 {
+
+}
+
 .center-flex {
     display: flex;
     align-items: center;
@@ -287,6 +291,7 @@ p {
     grid-template-columns: 1fr 1fr;
 }
 
+
 .flex-layout-3-1 {
     display: flex;
     flex-wrap: wrap;
@@ -300,7 +305,9 @@ p {
     gap: 20px;
 }
 
-
+.profile-title {
+    font-size: 20px;
+}
 
 .card-container-1 {
     padding: 50px;
@@ -433,6 +440,7 @@ body.dark-mode {
 input[type="text"].dark-mode,
 input[type="password"].dark-mode,
 input[type="number"].dark-mode,
+input[type="email"].dark-mode,
 input[type="search"].dark-mode,
 select.dark-mode,
 textarea.dark-mode {
@@ -445,6 +453,7 @@ input[type="text"].dark-mode::placeholder,
 input[type="password"].dark-mode::placeholder,
 input[type="number"].dark-mode::placeholder,
 input[type="search"].dark-mode::placeholder,
+input[type="email"].dark-mode::placeholder,
 select.dark-mode::placeholder,
 textarea.dark-mode::placeholder {
     color: var(--dark-mode-white-2);
@@ -454,6 +463,7 @@ input[type="text"].dark-mode:focus,
 input[type="password"].dark-mode:focus,
 input[type="number"].dark-mode:focus,
 input[type="search"].dark-mode:focus,
+input[type="email"].dark-mode:focus,
 select.dark-mode:focus,
 textarea.dark-mode:focus {
     background-color: var(--dark-mode-bg-3-hover);
@@ -464,6 +474,7 @@ input[type="text"],
 input[type="password"],
 input[type="number"],
 input[type="search"],
+input[type="email"],
 select,
 textarea {
     padding: 12px;
@@ -486,6 +497,7 @@ input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="number"]:focus,
 input[type="search"]:focus,
+input[type="email"]:focus,
 select:focus,
 textarea:focus {
     border: var(--selected-border)
@@ -546,6 +558,13 @@ textarea {
     border-radius: 5px;
 }
 
+.panel-success {
+    background-color: #c2f5d7;
+    padding: 15px;
+    border: 1px solid #27ae60;
+    border-radius: 5px;
+}
+
 .panel-error.dark-mode {
     background-color: #7d2020;
     color: white;
@@ -583,6 +602,23 @@ textarea {
 .done-button:hover {
     border: 1px solid rgb(151, 151, 151);
     color: rgb(151, 151, 151);
+}
+
+.profile-data {
+    cursor: pointer;
+}
+
+.p-40 {
+    padding: 40px;
+}
+
+.profile-logo {
+    font-size: 110px;
+}
+
+.form-content-2 {
+    width: 100%;
+    max-width: 600px;
 }
 
 @media screen and (max-width: 1320px) {

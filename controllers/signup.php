@@ -5,13 +5,13 @@ if (!isset($_POST["submit"])) {
 
 include_once "../includes/db.inc.php";
 
-$user = str_replace(" ", "", htmlentities($_POST["username"]));
-$pwd = str_replace(" ", "", htmlentities($_POST["pwd"]));
-$c_pwd = str_replace(" ", "", htmlentities($_POST["c-pwd"]));
+$user = str_replace(" ", "", $_POST["username"]);
+$pwd = str_replace(" ", "", $_POST["pwd"]);
+$c_pwd = str_replace(" ", "", $_POST["c-pwd"]);
 $role = htmlentities($_POST["role"]);
 $gender = htmlentities($_POST["gender"]);
-$email = str_replace(" ", "", htmlentities($_POST["email"]));
-$phone = str_replace(" ", "", htmlentities($_POST["phone"]));
+$email = str_replace(" ", "", $_POST["email"]);
+$phone = str_replace(" ", "", $_POST["phone"]);
 
 $verify = true;
 $verify_2 = true;
@@ -28,6 +28,7 @@ if (
 }
 
 if (
+    !preg_match("/^[a-zA-Z0-9]*$/",$user) ||
     !preg_match("/^[a-zA-Z0-9]*$/", $role) ||
     !preg_match("/^[a-zA-Z0-9]*$/", $gender) ||
     !preg_match("/^[0-9]*$/", $phone)
