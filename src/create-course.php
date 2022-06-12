@@ -5,17 +5,31 @@ if (!isset($_SESSION["access-token"])) {
     header("Location: ../index.php");
 }
 
+include("../includes/db.inc.php");
+
+$stmt = $conn->prepare("call check_course_exists_from_teacher(?)");
+
+$stmt->bind_param("s", $_SESSION["access-token"]);
+
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows != 0) {
+    header("Location: ".(isset($_GET["rdt"]) && $_GET["rdt"]== "1" ? "my-profile.php?panel=2" : "main-menu.php"));
+}
+
+$stmt->close();
+
 $html_title = "Create Course";
 
 include("./layout/header.php");
 include("./layout/navbar-1.php");
-
 ?>
 
 <main>
     <form action="./controllers/create-course.php" class="m-container a-dk form-2" method="post">
         <div class="form-content">
-            <a class="submit-login-forget text-single-1 a-dk" href="main-menu.php"><i class="fa-solid fa-angle-left"></i> Get Back</a>
+            <a class="submit-login-forget text-single-1 a-dk" href="<?= isset($_GET["rdt"]) && $_GET["rdt"]== "1" ? "my-profile.php?panel=2" : "main-menu.php" ?>"><i class="fa-solid fa-angle-left"></i> Get Back</a>
             <h1 style="margin-top: 20px" class="to-white a-dk form-title">Create Course</h1>
             <?php if (isset($_GET["error"])) { ?>
                 <div class="form-element">
