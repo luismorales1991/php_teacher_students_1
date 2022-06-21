@@ -29,26 +29,26 @@ grade_number.forEach(x => {
         document.querySelector("#modal-name-1").innerHTML = previousSiblingByClassName(x.parentElement, "student-name-case").children[0].innerHTML;
         document.querySelector("#modal-id").value = previousSiblingByClassName(x.parentElement, "assignment-id").value
 
-        if(x.classList.contains("u1")) {
+        if (x.classList.contains("u1")) {
             document.querySelector("#modal-unit").innerHTML = "I";
             document.querySelector("#modal-unit-data").value = "1";
         }
 
-        if(x.classList.contains("u2")) {
+        if (x.classList.contains("u2")) {
             document.querySelector("#modal-unit").innerHTML = "II";
             document.querySelector("#modal-unit-data").value = "2";
         }
 
-        if(x.classList.contains("u3")) {
+        if (x.classList.contains("u3")) {
             document.querySelector("#modal-unit").innerHTML = "III";
             document.querySelector("#modal-unit-data").value = "3";
         }
 
-        if(x.classList.contains("u4")) {
+        if (x.classList.contains("u4")) {
             document.querySelector("#modal-unit").innerHTML = "IV";
             document.querySelector("#modal-unit-data").value = "4";
         }
-        
+
         document.getElementById("overlay-modal").classList.toggle("disable");
         document.getElementById("edit-grade").classList.toggle("active");
         document.getElementById("input-change-grade").value = Number(x.innerHTML);
@@ -81,11 +81,14 @@ student_table_name.forEach(x => {
 
 document.getElementById("btn-bars-1").addEventListener("click", function () {
     document.getElementById("vertical-main-menu").classList.toggle("enable-b-1");
+    document.getElementById("vertical-overlay").classList.toggle("disable");
 });
 
 document.getElementById("x-button-vertical-menu").addEventListener("click", function () {
     document.getElementById("vertical-main-menu").classList.toggle("enable-b-1");
+    document.getElementById("vertical-overlay").classList.toggle("disable");
 });
+
 
 function previousSiblingByClassName(ele, className) {
     var el = ele;

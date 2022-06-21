@@ -48,7 +48,7 @@ if (strlen($pwd) < 4 || strlen($pwd) > 30) {
 }
 
 if ($pwd !== $c_pwd) {
-    header("Location: ../signup.php?error=Passwords don't match");
+    $error_name = "Password don't match";
     $verify = false;
 }
 

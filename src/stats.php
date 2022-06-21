@@ -49,7 +49,7 @@ include("./layout/modals.php");
     </div>
 </div>
 
-
+<script src="./js/stats.js"></script>
 <?php
 include("./layout/footer.php");
 $conn->close();

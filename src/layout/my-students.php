@@ -123,8 +123,8 @@ $stmt->close();
     <?php } ?>
 <?php } else if ($result1->num_rows == 0) { ?>
     <div style="text-align: center; margin-top: 40px">
-        <h2 class="a-dk to-white" style="margin-bottom: 30px">Whoops, looks like you haven't created your course yet!</h2>
-        <span style="margin-bottom: 30px" id="oops-logo" class="noselect a-dk to-white material-symbols-outlined">
+        <h2 class="title-error-layouts-1 a-dk to-white">Whoops, looks like you haven't created your course yet!</h2>
+        <span id="oops-logo" class="logo-error-layouts-1 noselect a-dk to-white material-symbols-outlined">
             sentiment_dissatisfied
         </span>
         <br>

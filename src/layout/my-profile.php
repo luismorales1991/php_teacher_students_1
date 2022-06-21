@@ -38,11 +38,11 @@ $images = [
 <div class="center-flex">
     <?php if (!isset($_GET["panel"]) || $_GET["panel"] != 2) { ?>
 
-        <div style="margin-top: 20px" class="form-content-2 box-cont-1 p-40 cont-profile">
+        <div style="margin-top: 20px" class="form-content-2 box-cont-1 cont-profile">
             <?php if ($role == "teacher") { ?>
                 <div class="vertical-menu-2">
                     <a class="vertical-options-2 <?= (!isset($_GET["panel"]) || $_GET["panel"] != 2 ? "active" : "") ?>" href="?panel=1">My User</a>
-                    <a class="vertical-options-2 <?= (isset($_GET["panel"]) && $_GET["panel"] == 2 ? "active" : "") ?>" href="?panel=2">My Course</a>
+                    <a class="vertical-options-2 a-dk to-white <?= (isset($_GET["panel"]) && $_GET["panel"] == 2 ? "active" : "") ?>" href="?panel=2">My Course</a>
                 </div>
                 <hr style="margin: 20px 0">
             <?php } ?>
@@ -54,8 +54,8 @@ $images = [
                     </div>
                 </div>
                 <div style="margin-top: 15px">
-                    <h3 style="color: black"><?php if ($role == "teacher") echo "Teacher";
-                                            if ($role == "student") echo "Student"; ?></h3>
+                    <h3 class="a-dk to-white"><?php if ($role == "teacher") echo "Teacher";
+                                                if ($role == "student") echo "Student"; ?></h3>
                 </div>
             </div>
             <form action="./controllers/update-user.php" method="post">
@@ -69,26 +69,24 @@ $images = [
                     </div>
                 <?php  } ?>
                 <div style="margin-top: 20px">
-                    <h5>Username:</h5>
-                    <input class="w-100" required="required" type="text" name="username" placeholder="Username" value="<?= $username  ?>">
+                    <h5 class="a-dk to-white">Username:</h5>
+                    <input class="a-dk w-100" required="required" type="text" name="username" placeholder="Username" value="<?= $username  ?>">
                 </div>
                 <div style="margin-top: 20px">
-                    <h5>Email:</h5>
-                    <input class="w-100" required="required" type="email" name="email" placeholder="example@domain.com" value="<?= $email  ?>">
+                    <h5 class="a-dk to-white">Email:</h5>
+                    <input class="a-dk w-100" required="required" type="email" name="email" placeholder="example@domain.com" value="<?= $email  ?>">
                 </div>
                 <div style="margin-top: 20px">
-                    <h5>Gender:</h5>
-                    <select required="required" class="w-100" name="gender">
+                    <h5 class="a-dk to-white">Gender:</h5>
+                    <select required="required" class="a-dk w-100" name="gender">
                         <option <?= $gender == "male" ? 'selected="selected"' : "" ?> value="male">Male</option>
                         <option <?= $gender == "female" ? 'selected="selected"' : "" ?> value="female">Female</option>
                         <option <?= $gender == "other" ? 'selected="selected"' : "" ?> value="other">Other</option>
                     </select>
                 </div>
                 <div style="margin-top: 20px">
-                    <div style="margin-top: 20px">
-                        <h5>Phone:</h5>
-                        <input required="required" id="input-phone" class="w-100" type="text" name="phone" placeholder="+1(xxx)xxx-xxx" value="<?= $phone  ?>">
-                    </div>
+                    <h5 class="a-dk to-white">Phone:</h5>
+                    <input required="required" id="input-phone" class="a-dk w-100" type="text" name="phone" placeholder="+1(xxx)xxx-xxx" value="<?= $phone  ?>">
                 </div>
                 <div class="tx-center" style="margin-top: 20px">
                     <button type="submit" name="submit" class="button button-main">Save changes</button>
@@ -98,7 +96,7 @@ $images = [
     <?php } elseif ($_GET["panel"] == 2 && $role == "teacher") { ?>
         <form method="post" action="./controllers/update-course.php" style="margin-top: 20px" class="form-content-2 box-cont-1 p-40 cont-profile">
             <div class="vertical-menu-2">
-                <a class="vertical-options-2 <?= (!isset($_GET["panel"]) || $_GET["panel"] != 2 ? "active" : "") ?>" href="?panel=1">My User</a>
+                <a class="vertical-options-2 a-dk to-white <?= (!isset($_GET["panel"]) || $_GET["panel"] != 2 ? "active" : "") ?>" href="?panel=1">My User</a>
                 <a class="vertical-options-2 <?= (isset($_GET["panel"]) && $_GET["panel"] == 2 ? "active" : "") ?>" href="?panel=2">My Course</a>
             </div>
             <hr style="margin: 20px 0">
@@ -106,9 +104,18 @@ $images = [
                 <div>
                     <img class="w-100 banner-1" src="<?= $bn ?>">
                 </div>
+                <?php if (isset($_GET["error"])) { ?>
+                    <div class="form-element">
+                        <div style="font-size: 0.9rem" class="a-dk panel-error"><?= $_GET["error"] ?></div>
+                    </div>
+                <?php  } else if (isset($_GET["message"]) && $_GET["message"] === "success") { ?>
+                    <div class="form-element">
+                        <div style="font-size: 0.9rem" class="a-dk panel-success">Course updated successfully!</div>
+                    </div>
+                <?php  } ?>
                 <div style="margin-top: 20px">
-                    <button id="change-banner-button" type="button" class="w-100 input-standard-2">Change banner <i id="change-banner-icon" class="fa-solid fa-angle-down"></i></button>
-                    <div class="change-banner-container grid-gap-2 grid-2-1">
+                    <button id="change-banner-button" type="button" class="w-100 a-dk input-standard-2">Change banner <i id="change-banner-icon" class="fa-solid fa-angle-down"></i></button>
+                    <div class="change-banner-container a-dk grid-gap-2 grid-2-1">
                         <?php foreach ($images as $i => $x) { ?>
                             <label class="change-banner-label" for="image-<?= $i ?>">
                                 <img class="change-banner-banner w-100" src="<?= $x ?>">
@@ -118,15 +125,15 @@ $images = [
                     </div>
                 </div>
                 <div style="margin-top: 20px">
-                    <h5>Course name:</h5>
-                    <input class="w-100" required="required" type="text" name="course" placeholder="Course name" value="<?= $name ?>">
+                    <h5 class="a-dk to-white">Course name:</h5>
+                    <input class="a-dk w-100" required="required" type="text" name="course" placeholder="Course name" value="<?= $name ?>">
                 </div>
                 <div style="margin-top: 20px">
-                    <h5>Occupancy:</h5>
-                    <input size="2" maxlength="2" required="required" type="text" name="occupancy" placeholder="1-30" value="<?= $lt ?>">
+                    <h5 class="a-dk to-white">Occupancy:</h5>
+                    <input class="a-dk" size="2" maxlength="2" required="required" type="text" name="occupancy" placeholder="1-30" value="<?= $lt ?>">
                 </div>
                 <div style="margin-top: 20px">
-                    <h5>Description:</h5>
+                    <h5 class="a-dk to-white">Description:</h5>
                     <textarea required placeholder="1-100" name="description" class="a-dk form-input-text" rows="10"><?= $desc ?></textarea>
                 </div>
                 <div class="tx-center" style="margin-top: 20px">
@@ -135,25 +142,15 @@ $images = [
                 </div>
             <?php } elseif ($result1->num_rows == 0) { ?>
                 <div class="tx-center">
-                    <h2>Time to create your own course!</h2>
+                    <h2 class="a-dk to-white">Time to create your own course!</h2>
                 </div>
                 <div class="tx-center" style="margin-top: 25px">
-                    <i id="oops-logo-2" class="fa-solid fa-bolt"></i>
+                    <i id="oops-logo-2" class="a-dk to-white fa-solid fa-bolt"></i>
                 </div>
                 <div class="tx-center" style="margin-top: 30px">
                     <a style="display: inline-block;text-decoration: none" href="create-course.php?rdt=1" class="button button-main">Create Course</a>
                 </div>
             <?php } ?>
-            <?php if (isset($_GET["error"])) { ?>
-                <div class="form-element">
-                    <div style="font-size: 0.9rem" class="a-dk panel-error"><?= $_GET["error"] ?></div>
-                </div>
-            <?php  } else if (isset($_GET["message"]) && $_GET["message"] === "success") { ?>
-                <div class="form-element">
-                    <div style="font-size: 0.9rem" class="a-dk panel-success">Course updated successfully!</div>
-                </div>
-            <?php  } ?>
-
         </form>
     <?php } ?>
 </div>

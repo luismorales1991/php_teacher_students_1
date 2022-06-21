@@ -13,6 +13,7 @@ if (isset($conn) && $role == "teacher") {
     $stmt->close();
 }
 ?>
+<div class="overlay disable" id="vertical-overlay"></div>
 <div class="vertical-main-menu-f a-dk" id="vertical-main-menu">
     <div id="x-button-vertical-menu-div">
         <button id="x-button-vertical-menu" class="x-button-2" type="button"><i class="fa-solid fa-xmark"></i></button>

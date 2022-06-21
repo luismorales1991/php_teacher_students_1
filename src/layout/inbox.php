@@ -63,7 +63,7 @@ $stmt->close();
     </div>
 <?php } elseif (count($inboxes) === 0) { ?>
     <div style="text-align: center; margin-top: 40px">
-        <h2 class="a-dk to-white" style="margin-bottom: 30px">Looks like you don't have requests. I think it's just a matter of time...</h2>
+        <h2 class="title-error-layouts-1 a-dk to-white" style="margin-bottom: 30px">Looks like you don't have requests. I think it's just a matter of time...</h2>
         <i style="display: block" id="oops-logo" class="a-dk to-white noselect fa-solid fa-umbrella"></i>
     </div>
 <?php } ?>
