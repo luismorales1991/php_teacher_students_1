@@ -67,13 +67,13 @@ for ($l = 0; $l < 2; $l++) {
     for ($i = 0; $i < count($courses); $i++) {
         switch ($l) {
             case 0:
-                if(in_array($i,$sames)) {
+                if (in_array($i, $sames)) {
                     $indexes_1[$count] = $courses[$i];
                     $count++;
                 }
                 break;
             case 1:
-                if(!in_array($i,$sames)) {
+                if (!in_array($i, $sames)) {
                     $indexes_1[$count] = $courses[$i];
                     $count++;
                 }
@@ -106,7 +106,7 @@ $stmt->close();
         <div style="margin-top: 20px" class="search-div">
             <div>
                 <span style="margin-right: 7px; font-weight: bold" class="a-dk all-p-1">Search:</span>
-                <input class="a-dk standard-input" ng-model="search" placeholder="Type the name" type="search">
+                <input class="a-dk standard-input" id="search-input" placeholder="Type the name" type="search">
             </div>
         </div>
         <hr style="margin: 20px 0">
@@ -117,7 +117,7 @@ $stmt->close();
                 $requested = false;
                 $assigned = false;
             ?>
-                <div class="box-cont-1">
+                <div class="box-cont-1 search-element">
                     <div>
                         <img src="<?= $x["banner"] ?>" class="image-course-search" />
                     </div>
@@ -135,7 +135,7 @@ $stmt->close();
                             <?= $x["occupancy"] ?>/<?= $x["limit"] ?><br />
                         </div>
                         <div>
-                            <h3 class="to-white a-dk" style="margin-bottom: 10px"><?= $x["name"] ?></h3>
+                            <h3 class="to-white a-dk search-filter" style="margin-bottom: 10px"><?= $x["name"] ?></h3>
                             <div style="margin-bottom: 10px">
                                 <b class="to-white a-dk">by: </b><span class="to-white a-dk"><?= $x["username"] ?></span>
                             </div>
@@ -176,3 +176,10 @@ $stmt->close();
         <i style="display: block" id="oops-logo" class="a-dk to-white noselect fa-solid fa-baby-carriage"></i>
     </div>
 <?php } ?>
+
+
+<div id="not-found-banner" style="text-align: center; margin-top: 20px; display: none">
+    <h2 class="a-dk to-white" style="margin-bottom: 20px">Course not found :(</h2>
+    <i style="display: block" id="oops-logo" class="a-dk to-white noselect fa-solid fa-heart-crack"></i>
+</div>
+<script src="./js/search.js"></script>

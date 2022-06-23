@@ -1,7 +1,7 @@
-var table_item = document.querySelectorAll(".edit-table-item");
-var x_button = document.querySelectorAll(".x-button");
-var grade_number = document.querySelectorAll(".grade-number");
-var student_table_name = document.querySelectorAll(".student-table-name");
+const table_item = document.querySelectorAll(".edit-table-item");
+const x_button = document.querySelectorAll(".x-button");
+const grade_number = document.querySelectorAll(".grade-number");
+const student_table_name = document.querySelectorAll(".student-table-name");
 
 window.onload = function () {
     if (localStorage.getItem("dark-mode") == null) {
