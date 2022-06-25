@@ -3,10 +3,34 @@ include_once "../../includes/db.inc.php";
 session_start();
 
 $error = "";
+$check_limit = [];
+
 
 if (!isset($_SESSION["access-token"])) {
     $error = "Error 403";
 }
+
+$stmt = $conn->prepare("call check_reached_limit(?)");
+
+$stmt->bind_param("s", $_POST["id"]);
+
+$stmt->execute();
+$result = $stmt->get_result();
+
+while ($row = $result->fetch_assoc()) {
+    $check_limit[0]["limit"] = $row["limit"];
+    $check_limit[0]["occupancy"] = $row["occupancy"];
+}
+
+if($check_limit[0]["limit"] == $check_limit[0]["occupancy"]) {
+    $error = "There is no more space";
+}
+
+if($check_limit[0]["limit"] < $check_limit[0]["occupancy"]) {
+    $error = "Error 500";
+}
+
+$stmt->close();
 
 $stmt = $conn->prepare("call get_user(?)");
 

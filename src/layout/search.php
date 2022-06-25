@@ -110,14 +110,20 @@ $stmt->close();
             </div>
         </div>
         <hr style="margin: 20px 0">
+        <?php if (isset($_GET["error"])) { ?>
+            <div style="margin-bottom: 20px" class="form-content">
+                <div style="font-size: 0.9rem" class="a-dk panel-error"><?= $_GET["error"] ?></div>
+            </div>
+        <?php  } ?>
         <div class="flex-layout-3-1 grid-gap-1">
+
 
             <?php
             foreach ($indexes_1 as $x) {
                 $requested = false;
                 $assigned = false;
             ?>
-                <div class="box-cont-1 search-element">
+                <div style="position: relative" class="box-cont-1 search-container search-element">
                     <div>
                         <img src="<?= $x["banner"] ?>" class="image-course-search" />
                     </div>
@@ -132,21 +138,28 @@ $stmt->close();
                         <?php } ?>
 
                         <div class="to-white a-dk" style="margin-bottom: 10px">
-                            <?= $x["occupancy"] ?>/<?= $x["limit"] ?><br />
+                            <?= $x["occupancy"] == $x["limit"] ? '<span><i style="color: #F79F1F" class="fa-solid fa-star"></i> Full - ' . $x["occupancy"] . "/" . $x["limit"] . '</span>' : $x["occupancy"] . "/" . $x["limit"] ?>
+                            <?= $x["occupancy"] > $x["limit"] ? "ERROR" : "" ?>
                         </div>
                         <div>
                             <h3 class="to-white a-dk search-filter" style="margin-bottom: 10px"><?= $x["name"] ?></h3>
                             <div style="margin-bottom: 10px">
                                 <b class="to-white a-dk">by: </b><span class="to-white a-dk"><?= $x["username"] ?></span>
                             </div>
-                            <p class="to-white a-dk" style="margin-bottom: 10px"><?= $x["description"] ?></p>
+                            <p class="<?= (strlen($x["description"]) > 160) ? "d-u-160" : "" ?> to-white a-dk course-description" style="margin-bottom: 10px"><?= $x["description"] ?></p>
                         </div>
-                        <div style="margin-bottom: 10px">
-                            <button class="view-more to-white a-dk"><i class="fa-solid fa-angle-down"></i> View More</button>
-                        </div>
+
+                        <?php if (strlen($x["description"]) > 160) { ?>
+                            <div style="margin-bottom: 10px">
+                                <input type="hidden" value="<?= $x["description"] ?>" />
+                                <button class="view-more to-white a-dk">
+                                    <i class="fa-solid fa-angle-down"></i> View More
+                                </button>
+                            </div>
+                        <?php  } ?>
                         <form action="controllers/<?php echo ($assigned === true) ? "delete-assign.php" : "create-inbox.php" ?>" method="post">
                             <input type="hidden" name="id" value="<?= $x["id"] ?>">
-                            <div class="tx-center">
+                            <div class="search-button-div tx-center">
                                 <?php foreach ($inbox as $y) { ?>
                                     <?php if ($x["id"] == $y) {
                                         $requested = true;
@@ -154,10 +167,10 @@ $stmt->close();
                                 <?php } ?>
                                 <?php if ($assigned === true) { ?>
                                     <button name="submit" type="submit" class="button reject-button">Unassing</button>
-                                <?php } elseif ($requested === false) { ?>
+                                <?php } elseif (($requested === false) && ($x["occupancy"] != $x["limit"] || $x["occupancy"] < $x["limit"])) { ?>
                                     <input type="hidden" name="request" value="true">
                                     <button name="submit" type="submit" class="button accept-button">Request</button>
-                                <?php } elseif ($requested === true) { ?>
+                                <?php } elseif (($requested === true) && ($x["occupancy"] != $x["limit"] || $x["occupancy"] < $x["limit"])) { ?>
                                     <input type="hidden" name="request" value="false">
                                     <button name="submit" type="submit" class="a-dk button done-button">Requested</button>
                                 <?php } ?>
@@ -182,4 +195,5 @@ $stmt->close();
     <h2 class="a-dk to-white" style="margin-bottom: 20px">Course not found :(</h2>
     <i style="display: block" id="oops-logo" class="a-dk to-white noselect fa-solid fa-heart-crack"></i>
 </div>
+<script src="./js/search-js.js"></script>
 <script src="./js/search.js"></script>

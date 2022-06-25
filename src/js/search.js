@@ -1,47 +1,32 @@
-const search_input = document.querySelector("#search-input");
-const search_filter = document.querySelectorAll(".search-filter");
+const des = document.querySelectorAll(".course-description");
+const view_more = document.querySelectorAll(".view-more");
 
-function getSearchElements(filter) {
-    let array = [];
-    filter.forEach((x) => {
-        let a = x.parentNode;
+function shrinkExpandText(descr) {
+    descr.forEach(x => {
+        const desc = x.innerHTML;
+        let short_desc = desc.slice(0, 150);
 
-        while (a.nodeName !== "BODY") {
-            if (a.classList.contains("search-element")) {
-                array.push(a);
+        if (x.classList.contains("d-u-160")) {
+            const view_button = x.parentNode.nextElementSibling.childNodes[3];
+
+            if (view_button.classList.contains("active")) {
+                const backup_text = view_button.previousSibling.previousSibling;
+                x.innerHTML = backup_text.value;
+            } else {
+                if (short_desc.substring(short_desc.length - 1) == " ") short_desc = short_desc.substring(0, short_desc.length - 1);
+                x.innerHTML = short_desc + "...";
             }
-            a = a.parentNode;
         }
     });
-
-    return array;
 }
 
-function doSearch() {
-    const typed = this.value.toUpperCase();
-    let elements = getSearchElements(search_filter);
-    let count = 0;
+view_more.forEach(x => {
+    x.addEventListener("click", function () {
+        x.childNodes[1].classList.toggle("fa-angle-down");
+        x.childNodes[1].classList.toggle("fa-angle-up");
+        this.classList.toggle("active");
+        shrinkExpandText(des);
+    })
+});
 
-    search_filter.forEach((x, i) => {
-        let names = x.innerHTML.toUpperCase();
-        if(!names.includes(typed)) {
-            elements[i].style.display = "none";
-        } else {
-            elements[i].style.display = "block";
-            count++;
-        }
-    });
-
-    if(document.body.contains(document.getElementById("not-found-banner"))) {
-        if (count === 0) {
-            document.getElementById("not-found-banner").style.display = "block";
-        } else if (count > 0) {
-            document.getElementById("not-found-banner").style.display = "none";
-        }
-        
-    }
-}
-
-search_input.addEventListener("keyup", doSearch);
-
-search_input.addEventListener("search", doSearch);
+shrinkExpandText(des);

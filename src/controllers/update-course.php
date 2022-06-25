@@ -14,6 +14,8 @@ $limit = $_POST["occupancy"];
 $n_limit = intval($limit);
 $description = $_POST["description"];
 
+
+die();
 $error = "";
 
 if (empty($title) || empty($limit) || empty($description)) {
