@@ -27,7 +27,7 @@ if($check_limit[0]["limit"] == $check_limit[0]["occupancy"]) {
 }
 
 if($check_limit[0]["limit"] < $check_limit[0]["occupancy"]) {
-    $error = "Error 500";
+    $error = "Error 500. CONTACT THE DEVELOPER";
 }
 
 $stmt->close();

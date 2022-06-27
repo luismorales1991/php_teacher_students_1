@@ -157,7 +157,7 @@ $stmt->close();
                                 </button>
                             </div>
                         <?php  } ?>
-                        <form action="controllers/<?php echo ($assigned === true) ? "delete-assign.php" : "create-inbox.php" ?>" method="post">
+                        <form action="controllers/<?php echo ($assigned === true) ? "delete-assignment.php?type=2" : "create-inbox.php" ?>" method="post">
                             <input type="hidden" name="id" value="<?= $x["id"] ?>">
                             <div class="search-button-div tx-center">
                                 <?php foreach ($inbox as $y) { ?>

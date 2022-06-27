@@ -31,6 +31,18 @@ $stmt->close();
     <br>
     <p class="all-p-1 a-dk"><b>Note:</b> In this application, if you have less than 4 grades, the average it's still calculated as an average of 4 values.</p>
     <br>
+    <div style="margin-top: 10px">
+        <div class="all-p-1 a-dk" style="margin-bottom: 5px">
+            <span class="approved-text a-dk">Approved</span> - the student has passed the subject.
+        </div>
+        <div class="all-p-1 a-dk" style="margin-bottom: 5px">
+            <span class="semi-approved-text a-dk">Semi Approved</span> - the student did not passed the subject but still has chance to do an extraodinary exam.
+        </div>
+        <div class="all-p-1 a-dk">
+            <span class="not-approved-text a-dk">Not Approved</span> - the student did not passed the subject and does not have a chance to do an extraodinary exam.
+        </div>
+    </div>
+    <hr style="margin-top: 20px" />
     <div style="margin-top: 20px" class="table-div">
         <table class="table-1">
             <tr>

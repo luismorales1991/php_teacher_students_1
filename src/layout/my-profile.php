@@ -10,6 +10,7 @@ $name = "";
 $desc = "";
 $lt = "";
 $bn = "";
+$oc = "";
 
 while ($row = $result1->fetch_assoc()) {
     $id = $row["id"];
@@ -17,6 +18,7 @@ while ($row = $result1->fetch_assoc()) {
     $desc = $row["description"];
     $lt = $row["limit"];
     $bn = $row["banner"];
+    $oc = $row["occupancy"];
 }
 
 $stmt->close();
@@ -29,7 +31,7 @@ $images = [
     "https://www.thoughtco.com/thmb/hQC8gjfZ4Rd421J4i3UeRwr6eZY=/3865x2576/filters:fill(auto,1)/teenage-students-in-classroom--141090063-5a653ed40c1a8200366bdd66.jpg",
     "https://myviewboard.com/products/classroom/images/og.jpg",
     "https://www.teacheracademy.eu/wp-content/uploads/2020/02/english-classroom.jpg"
-]
+];
 ?>
 
 <h2 class="title-right-div a-dk h2-title-1"><span class="icon-title-h2-1 material-icons-outlined">account_box</span> My Profile</h2>
@@ -58,6 +60,11 @@ $images = [
                                                 if ($role == "student") echo "Student"; ?></h3>
                 </div>
             </div>
+
+            <form class="form-element" action="./controllers/delete-user.php" method="post">
+                <input type="hidden" name="id" value="<?= $id ?>">
+                <button type="submit" name="submit" class="button reject-button"><i class="fa-solid fa-trash"></i> Delete User</button>
+            </form>
             <form action="./controllers/update-user.php" method="post">
                 <?php if (isset($_GET["error"])) { ?>
                     <div class="form-element">
@@ -94,7 +101,7 @@ $images = [
             </form>
         </div>
     <?php } elseif ($_GET["panel"] == 2 && $role == "teacher") { ?>
-        <form method="post" action="./controllers/update-course.php" style="margin-top: 20px" class="form-content-2 box-cont-1 p-40 cont-profile">
+        <div class="form-content-2 box-cont-1 p-40 cont-profile" style="margin-top: 20px">
             <div class="vertical-menu-2">
                 <a class="vertical-options-2 a-dk to-white <?= (!isset($_GET["panel"]) || $_GET["panel"] != 2 ? "active" : "") ?>" href="?panel=1">My User</a>
                 <a class="vertical-options-2 <?= (isset($_GET["panel"]) && $_GET["panel"] == 2 ? "active" : "") ?>" href="?panel=2">My Course</a>
@@ -104,42 +111,48 @@ $images = [
                 <div>
                     <img class="w-100 banner-1" src="<?= $bn ?>">
                 </div>
-                <?php if (isset($_GET["error"])) { ?>
-                    <div class="form-element">
-                        <div style="font-size: 0.9rem" class="a-dk panel-error"><?= $_GET["error"] ?></div>
-                    </div>
-                <?php  } else if (isset($_GET["message"]) && $_GET["message"] === "success") { ?>
-                    <div class="form-element">
-                        <div style="font-size: 0.9rem" class="a-dk panel-success">Course updated successfully!</div>
-                    </div>
-                <?php  } ?>
-                <div style="margin-top: 20px">
-                    <button id="change-banner-button" type="button" class="w-100 a-dk input-standard-2">Change banner <i id="change-banner-icon" class="fa-solid fa-angle-down"></i></button>
-                    <div class="change-banner-container a-dk grid-gap-2 grid-2-1">
-                        <?php foreach ($images as $i => $x) { ?>
-                            <label class="change-banner-label" for="image-<?= $i ?>">
-                                <img class="change-banner-banner w-100" src="<?= $x ?>">
-                                <input <?= $x == $bn ? "checked" : "" ?> class="change-banner-input" value="<?= $x ?>" type="radio" name="banner" id="image-<?= $i ?>">
-                            </label>
-                        <?php } ?>
-                    </div>
-                </div>
-                <div style="margin-top: 20px">
-                    <h5 class="a-dk to-white">Course name:</h5>
-                    <input class="a-dk w-100" required="required" type="text" name="course" placeholder="Course name" value="<?= $name ?>">
-                </div>
-                <div style="margin-top: 20px">
-                    <h5 class="a-dk to-white">Occupancy:</h5>
-                    <input class="a-dk" size="2" maxlength="2" required="required" type="text" name="occupancy" placeholder="1-30" value="<?= $lt ?>">
-                </div>
-                <div style="margin-top: 20px">
-                    <h5 class="a-dk to-white">Description:</h5>
-                    <textarea required placeholder="1-100" name="description" class="a-dk form-input-text" rows="10"><?= $desc ?></textarea>
-                </div>
-                <div class="tx-center" style="margin-top: 20px">
+                <form class="form-element" action="./controllers/delete-course.php" method="post">
                     <input type="hidden" name="id" value="<?= $id ?>">
-                    <button type="submit" name="submit" class="button button-main">Save changes</button>
-                </div>
+                    <button type="submit" name="submit" class="button reject-button"><i class="fa-solid fa-trash"></i> Delete Course</button>
+                </form>
+                <form method="post" action="./controllers/update-course.php">
+                    <?php if (isset($_GET["error"])) { ?>
+                        <div class="form-element">
+                            <div style="font-size: 0.9rem" class="a-dk panel-error"><?= $_GET["error"] ?></div>
+                        </div>
+                    <?php  } else if (isset($_GET["message"]) && $_GET["message"] === "success") { ?>
+                        <div class="form-element">
+                            <div style="font-size: 0.9rem" class="a-dk panel-success">Course updated successfully!</div>
+                        </div>
+                    <?php  } ?>
+                    <div style="margin-top: 20px">
+                        <button id="change-banner-button" type="button" class="w-100 a-dk input-standard-2">Change banner <i id="change-banner-icon" class="fa-solid fa-angle-down"></i></button>
+                        <div class="change-banner-container a-dk grid-gap-2 grid-2-1">
+                            <?php foreach ($images as $i => $x) { ?>
+                                <label class="change-banner-label" for="image-<?= $i ?>">
+                                    <img class="change-banner-banner w-100" src="<?= $x ?>">
+                                    <input <?= $x == $bn ? "checked" : "" ?> class="change-banner-input" value="<?= $x ?>" type="radio" name="banner" id="image-<?= $i ?>">
+                                </label>
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <div style="margin-top: 20px">
+                        <h5 class="a-dk to-white">Course name:</h5>
+                        <input class="a-dk w-100" required="required" type="text" name="course" placeholder="Course name" value="<?= $name ?>">
+                    </div>
+                    <div style="margin-top: 20px">
+                        <h5 class="a-dk to-white">Limit:</h5>
+                        <span><?= $oc ?> / </span><input class="a-dk" size="2" maxlength="2" required="required" type="text" name="occupancy" placeholder="1-30" value="<?= $lt ?>">
+                    </div>
+                    <div style="margin-top: 20px">
+                        <h5 class="a-dk to-white">Description:</h5>
+                        <textarea required placeholder="1-100" name="description" class="a-dk form-input-text" rows="10"><?= $desc ?></textarea>
+                    </div>
+                    <div class="tx-center" style="margin-top: 20px">
+                        <input type="hidden" name="id" value="<?= $id ?>">
+                        <button type="submit" name="submit" class="button button-main">Save changes</button>
+                    </div>
+                </form>
             <?php } elseif ($result1->num_rows == 0) { ?>
                 <div class="tx-center">
                     <h2 class="a-dk to-white">Time to create your own course!</h2>
@@ -151,6 +164,6 @@ $images = [
                     <a style="display: inline-block;text-decoration: none" href="create-course.php?rdt=1" class="button button-main">Create Course</a>
                 </div>
             <?php } ?>
-        </form>
+        </div>
     <?php } ?>
 </div>

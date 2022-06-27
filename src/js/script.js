@@ -27,7 +27,7 @@ x_button.forEach(x => {
 grade_number.forEach(x => {
     x.addEventListener("click", function () {
         document.querySelector("#modal-name-1").innerHTML = previousSiblingByClassName(x.parentElement, "student-name-case").children[0].innerHTML;
-        document.querySelector("#modal-id").value = previousSiblingByClassName(x.parentElement, "assignment-id").value
+        document.querySelector("#modal-id").value = previousSiblingByClassName(x.parentElement, "assignment-id").value;
 
         if (x.classList.contains("u1")) {
             document.querySelector("#modal-unit").innerHTML = "I";
@@ -74,6 +74,7 @@ document.getElementById("dark-mode-2").addEventListener("click", function () {
 
 student_table_name.forEach(x => {
     x.addEventListener("click", function () {
+        document.querySelector("#modal-id-2").value = x.parentNode.nextSibling.nextSibling.value;
         document.getElementById("overlay-modal-student").classList.toggle("disable");
         document.getElementById("edit-student").classList.toggle("active");
     });

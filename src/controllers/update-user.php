@@ -6,18 +6,71 @@ if (!isset($_POST["submit"]) || !isset($_SESSION["access-token"])) {
 
 include_once "../../includes/db.inc.php";
 
+$q_username = "";
+$q_email = "";
+
 $user = str_replace(" ", "", $_POST["username"]);
 $gender = $_POST["gender"];
 $email = str_replace(" ", "", $_POST["email"]);
 $phone = str_replace(" ", "", $_POST["phone"]);
 
 $verify = true;
-$verify_2 = true;
 $error_name = "";
-$error_name_2 = "";
 
-if(empty($user) || empty($gender) || empty($gender) || empty($email)) {
+if (empty($user) || empty($gender) || empty($gender) || empty($email)) {
     $empty_name = "Empty rows";
+    $verify = false;
+}
+
+$stmt = $conn->prepare("call get_user(?)");
+
+$stmt->bind_param("s", $_SESSION["access-token"]);
+
+$stmt->execute();
+$result = $stmt->get_result();
+
+while ($row = $result->fetch_assoc()) {
+    $q_username = $row["username"];
+    $q_email = $row["email"];
+}
+
+$stmt->close();
+
+if ($q_username != $user) {
+    $stmt = $conn->prepare("call check_duplicated_username(?)");
+
+    $stmt->bind_param("s", $user);
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $stmt->close();
+
+    if ($result->num_rows > 0) {
+        $verify = false;
+        $error_name = "The username is already used";
+    }
+}
+
+if ($q_email != $email) {
+    $stmt = $conn->prepare("call check_duplicated_email(?)");
+
+    $stmt->bind_param("s", $email);
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $stmt->close();
+    if ($result->num_rows > 0) {
+        $verify = false;
+        $error_name = "The email is already used";
+    }
+}
+
+if (
+    !preg_match("/^[a-zA-Z0-9]*$/", $user) ||
+    !preg_match("/^[a-zA-Z0-9]*$/", $gender) ||
+    !preg_match("/^[0-9]*$/", $phone)
+) {
+    $error_name = "Invalid characters";
     $verify = false;
 }
 
@@ -53,18 +106,14 @@ if (strlen($phone) !== 10) {
 if ($verify === false) {
     header("Location: ../my-profile.php?error=$error_name");
 } else if ($verify === true) {
-    if ($verify_2 == false) {
-        header("Location: ../my-profile.php?error=$error_name_2");
-    } else if ($verify_2 = true) {
-        $stmt = $conn->prepare("call edit_user(?,?,?,?,?)");
+    $stmt = $conn->prepare("call edit_user(?,?,?,?,?)");
 
-        $stmt->bind_param("sssss",$_SESSION["access-token"] ,$user, $email, $phone, $gender);
+    $stmt->bind_param("sssss", $_SESSION["access-token"], $user, $email, $phone, $gender);
 
-        if ($stmt->execute()) {
-            header("Location: ../my-profile.php?message=success");
-        }
-
-        $stmt->close();
+    if ($stmt->execute()) {
+        header("Location: ../my-profile.php?message=success");
     }
+
+    $stmt->close();
 }
 $conn->close();

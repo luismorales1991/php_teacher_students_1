@@ -86,7 +86,6 @@ if (strlen($phone) !== 10) {
 if ($verify === false) {
     header("Location: ../signup.php?error=$error_name");
 } else if ($verify === true) {
-
     $stmt = $conn->prepare("call check_duplicated_username(?)");
 
     $stmt->bind_param("s", $user);

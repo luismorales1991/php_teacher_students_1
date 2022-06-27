@@ -27,7 +27,7 @@
 
 <div class="overlay disable" id="overlay-modal-student">
     <div class="modal-container">
-        <form method="post" id="edit-student" class="modal">
+        <form method="post" action="./controllers/delete-assignment.php" id="edit-student" class="modal">
             <div class="modal-header ov-au">
                 <span style="font-size: 17px">Edit student</span>
                 <button class="x-button" type="button">x</button>
@@ -40,6 +40,7 @@
             </div>
             <div class="ov-au modal-footer a-dk">
                 <div class="tx-center button-container">
+                    <input type="hidden" id="modal-id-2" name="id">
                     <button class="modal-button button button-red-1">Unassign</button>
                 </div>
             </div>
