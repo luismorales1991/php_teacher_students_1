@@ -8,11 +8,31 @@
     <div class="card-container-1 table-div">
         <h2 class="title-stats a-dk to-white">Top 5 courses with the largest number of students</h2>
         <canvas id="myChart" class="chart-1"></canvas>
+        <div class="oops-container disable">
+            <div class="oops-content">
+                <div class="tx-center">
+                    <i class="oops-logo-3 a-dk to-white fa-solid fa-umbrella"></i>
+                </div>
+                <div class="tx-center" style="margin-top: 25px">
+                    <h2 class="oops-text-3 a-dk to-white">Sorry, no data yet</h2>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="card-container-1 table-div">
         <h2 class="title-stats a-dk to-white">Students Gender</h2>
         <canvas id="myChart2" class="chart-1"></canvas>
+        <div class="oops-container disable">
+            <div class="oops-content">
+                <div class="tx-center">
+                    <i class="oops-logo-3 a-dk to-white fa-solid fa-umbrella"></i>
+                </div>
+                <div class="tx-center" style="margin-top: 25px">
+                    <h2 class="oops-text-3 a-dk to-white">Sorry, no data yet</h2>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div id="chart-4" class="card-container-1 table-div">

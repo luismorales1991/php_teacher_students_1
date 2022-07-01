@@ -7,7 +7,7 @@
     
     include_once "../../includes/db.inc.php";
 
-    if (empty($_SESSION["access-token"]) || empty($_POST["id"])) {
+    if (empty($_SESSION["access-token"])) {
         $error = "Error 400";
     }
 
@@ -16,7 +16,7 @@
     } else {
         $stmt = $conn->prepare("call delete_my_user(?)");
     
-        $stmt->bind_param("s", $_POST["id"]);
+        $stmt->bind_param("s", $_SESSION["access-token"]);
     
         if ($stmt->execute()) {
             header("Location: ./logout.php");

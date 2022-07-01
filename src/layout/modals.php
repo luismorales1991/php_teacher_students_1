@@ -19,6 +19,7 @@
             <div class="ov-au modal-footer a-dk">
                 <div class="tx-center button-container">
                     <button type="submit" name="submit" class="modal-button button button-main">Save</button>
+                    <button type="submit" id="remove-grade-button" name="submit-2" class="modal-button button reject-button">Remove</button>
                 </div>
             </div>
         </form>

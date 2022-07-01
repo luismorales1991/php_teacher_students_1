@@ -41,15 +41,20 @@ function getData(link) {
 }
 
 async function setDataOnChart(chart, getterdata) {
-    let result = await getterdata;
+    const result = await getterdata;
 
-    result.forEach(x => {
-        chart.data.labels.push(x.name);
-        chart.data.datasets.forEach((dataset) => {
-            dataset.data.push(x.num);
+    if(result.length === 0) {
+        chart.canvas.style.display = "none";
+        chart.canvas.nextSibling.nextSibling.classList.remove("disable");
+    } else {
+        result.forEach(x => {
+            chart.data.labels.push(x.name);
+            chart.data.datasets.forEach((dataset) => {
+                dataset.data.push(x.num);
+            });
         });
-    });
-    chart.update();
+        chart.update();
+    }
 }
 
 // FIRST CHART

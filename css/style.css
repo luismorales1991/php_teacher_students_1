@@ -214,21 +214,6 @@ textarea:focus {
     transition: color .1s ease;
 }
 
-.info-div {
-    z-index: 3;
-    backdrop-filter: blur(20px);
-    background-color: rgba(255, 255, 255, 0.72);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-
-.info-div-container {
-    padding: 40px
-}
-
 .x-button-1 {
     background-color: transparent;
     border: none;
@@ -245,10 +230,10 @@ textarea:focus {
 .ov-au {
     overflow: auto;
 }
-
+/* 
 .info-nav:hover {
     color: var(--color-main-hover);
-}
+} */
 
 .info-btn {
     border: none;
@@ -308,7 +293,7 @@ input[type=number] {
 }
 
 .panel-error {
-    background-color: #fdb3b3;
+    background-color: #ffe9e9;
     padding: 15px;
     border: 1px solid #d63031;
     border-radius: 5px;

@@ -62,7 +62,6 @@ $images = [
             </div>
 
             <form class="form-element" action="./controllers/delete-user.php" method="post">
-                <input type="hidden" name="id" value="<?= $id ?>">
                 <button type="submit" name="submit" class="button reject-button"><i class="fa-solid fa-trash"></i> Delete User</button>
             </form>
             <form action="./controllers/update-user.php" method="post">

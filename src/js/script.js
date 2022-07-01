@@ -49,6 +49,12 @@ grade_number.forEach(x => {
             document.querySelector("#modal-unit-data").value = "4";
         }
 
+        if(isNaN(x.innerHTML)) {
+            document.getElementById("remove-grade-button").style.display = "none";
+        } else {
+            document.getElementById("remove-grade-button").style.display = "inline-block";
+        }
+
         document.getElementById("overlay-modal").classList.toggle("disable");
         document.getElementById("edit-grade").classList.toggle("active");
         document.getElementById("input-change-grade").value = Number(x.innerHTML);

@@ -17,25 +17,13 @@ if (isset($_SESSION["access-token"])) {
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/about.css">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
     <script src="https://kit.fontawesome.com/0e82dbf83d.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="a-dk">
-    <div class="disable info-div info-appear" id="info-div">
-        <nav class="ov-au"><button class="x-button-1 f-right" id="info-button-2"><i class="fa-solid fa-x"></i></button></nav>
-        <hr>
-        <div class="info-div-container">
-            <h1>Welcome Netizen!</h1>
-            <p>This is my first project. It is an academic grade management application.</p>
-            <p>Contains two roles: Student and teacher</p>
-            <p>Teacher: The teacher can perform three actions:</p>
-            <ol>
-                <li>You can create, read, update and delete your students' grades</li>
-                <li>He has an inbox where he can accept or reject students from his class</li>
-            </ol>
-        </div>
-    </div>
+    <?php include_once("./src/layout/info.php") ?>
     <header>
         <nav class="navbar a-dk">
             <div class="m-container">
@@ -94,12 +82,14 @@ if (isset($_SESSION["access-token"])) {
                     <button class="submit-login-item button button-main" name="submit" type="submit">Sign In</button>
                     <a class="a-dk button-login-2 submit-login-item button button-a button-main-cty" href="signup.php">Sign Up</a>
                 </div>
+            </div>
         </form>
         </div>
         <span style="opacity: 0" class="material-icons">
             dark_mode
         </span>
     </main>
+    <script src="./js/about.js"></script>
     <script src="./js/index.js"></script>
 </body>
 

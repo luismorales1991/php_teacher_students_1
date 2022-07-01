@@ -562,6 +562,17 @@ textarea {
     font-size: 200px;
 }
 
+.oops-logo-3 {
+    font-size: 125px;
+}
+
+.oops-content {
+    color: gray;
+    margin-top: 40px;
+    /* margin-top: 50%;
+    transform: translateY(-50%); */
+}
+
 .noselect {
     -webkit-touch-callout: none;
     /* iOS Safari */
@@ -778,6 +789,11 @@ textarea {
     .all-p-1, .average-num {
         font-size: 15px
     }
+
+    .oops-logo-3 {
+        font-size: 100px;
+    }
+    
 }
 
 @media screen and (max-width: 650px) {
@@ -853,6 +869,14 @@ textarea {
 @media screen and (max-width: 560px) {
     .card-container-1 {
         padding: 25px 6%;
+    }
+
+    .oops-logo-3 {
+        font-size: 80px;
+    }
+
+    .oops-text-3 {
+        font-size: 16px;
     }
 }
 
