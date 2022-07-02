@@ -1,8 +1,8 @@
 <?php
-$host = "localhost";
-$user = "root";
-$pwd = "admin";
-$db = "php_t_s";
+$host = getenv("YOUR_HOST");
+$user = getenv("YOUR_USER");
+$pwd = getenv("YOUR_PASSWORD");
+$db = getenv("YOUR_DATABASE");
 
 $conn = mysqli_connect($host, $user, $pwd, $db);
 
