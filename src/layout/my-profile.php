@@ -100,7 +100,7 @@ $images = [
             </form>
         </div>
     <?php } elseif ($_GET["panel"] == 2 && $role == "teacher") { ?>
-        <div class="form-content-2 box-cont-1 p-40 cont-profile" style="margin-top: 20px">
+        <div class="form-content-2 box-cont-1 cont-profile" style="margin-top: 20px">
             <div class="vertical-menu-2">
                 <a class="vertical-options-2 a-dk to-white <?= (!isset($_GET["panel"]) || $_GET["panel"] != 2 ? "active" : "") ?>" href="?panel=1">My User</a>
                 <a class="vertical-options-2 <?= (isset($_GET["panel"]) && $_GET["panel"] == 2 ? "active" : "") ?>" href="?panel=2">My Course</a>

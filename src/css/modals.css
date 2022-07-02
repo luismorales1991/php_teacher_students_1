@@ -85,7 +85,7 @@
 }
 
 .modal-button {
-    padding: 12px 30px;
+    padding: 12px 26px;
 }
 
 @media screen and (max-width: 445px) {
@@ -95,5 +95,16 @@
 
     .modal-container {
         padding: 0 30px;
+    }
+}
+
+@media screen and (max-width: 338px) {
+    .modal-button {
+        display: block;
+        width: 100%;
+    }
+
+    .modal-button:first-child {
+        margin-bottom: 7px;
     }
 }

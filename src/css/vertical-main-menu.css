@@ -251,6 +251,18 @@
     }
 }
 
+@media screen and (max-width: 510px) {
+    .vertical-menu-2 {
+        width: 100%;
+    }
+    
+    .vertical-options-2 {
+        text-align: center;
+        padding: 13px 0px;
+        width: 50%;
+    }
+}
+
 @media screen and (max-width: 380px) {
     .v-o-fa {
         padding: 20px 14%;
