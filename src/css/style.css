@@ -746,6 +746,10 @@ textarea {
     height: 200px;
 }
 
+.no-scroll {
+    overflow:hidden;
+}
+
 .search-button-div {
     position: absolute;
     bottom: 20px;

@@ -1,7 +1,6 @@
 .info-div {
-    z-index: 3;
-    backdrop-filter: blur(17px);
-    background-color: rgba(255, 255, 255, 0.72);
+    z-index: 6;
+    background-color: rgba(255, 255, 255);
     position: fixed;
     top: 125%;
     left: 0;
@@ -19,25 +18,10 @@
     margin-top: 20px;
 }
 
-/* H:315 ; W:560 */
-
 .info-navi {
     padding: 10px 50px;
     overflow: hidden;
     border-bottom: 1px solid rgb(206, 206, 206);
-}
-
-.info-video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-}
-  
-.info-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
 }
 
 .info-x-button {
@@ -52,4 +36,14 @@
 
 .info-x-button:hover {
     color: gray
+}
+
+@media screen and (max-width: 530px) {
+    .info-content {
+        margin: 20px 6%;
+    }
+
+    .info-navi {
+        padding: 10px 6%;
+    }
 }

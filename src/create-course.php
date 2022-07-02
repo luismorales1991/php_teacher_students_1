@@ -110,3 +110,7 @@ include("./layout/navbar-1.php");
 </main>
 
 <script src="js/navbar-1.js"></script>
+
+<script src="../js/about.js"></script>
+</body>
+</html>

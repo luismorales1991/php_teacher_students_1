@@ -1,9 +1,9 @@
-<?php 
-    session_start();
+<?php
+session_start();
 
-    if(isset($_SESSION["access-token"])) {
-        header("Location: ./src/main-menu.php");
-    }
+if (isset($_SESSION["access-token"])) {
+    header("Location: ./src/main-menu.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -16,29 +16,19 @@
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/about.css">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
     <script src="https://kit.fontawesome.com/0e82dbf83d.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="a-dk">
-    <div class="disable info-div info-appear" id="info-div">
-        <nav class="ov-au"><button class="x-button-1 f-right" id="info-button-2"><i class="fa-solid fa-x"></i></button></nav>
-        <hr>
-        <div class="info-div-container">
-            <h1>Welcome Netizen!</h1>
-            <p>This is my first project. It is an academic grade management application.</p>
-            <p>Contains two roles: Student and teacher</p>
-            <p>Teacher: The teacher can perform three actions:</p>
-            <ol>
-                <li>You can create, read, update and delete your students' grades</li>
-                <li>He has an inbox where he can accept or reject students from his class</li>
-            </ol>
-        </div>
-    </div>
+    <?php include_once("./src/layout/info.php") ?>
     <header>
         <nav class="navbar a-dk">
             <div class="m-container">
-            <a style="color: black" href="index.php"><h2 class="logo a-dk">Teacher<span>Students</span></h2></a>
+                <a style="color: black" href="index.php">
+                    <h2 class="logo a-dk">Teacher<span>Students</span></h2>
+                </a>
                 <div class="f-right">
                     <button id="switch-dark-mode-1" class="switch-dark-button switch-dark-mode-label">
                         <span class="switch-dark-mode-text a-dk">Dark Mode</span>
@@ -138,6 +128,7 @@
 
     <script src="./node_modules/cleave.js/dist/cleave.min.js"></script>
     <script src="./node_modules/cleave.js/dist/addons/cleave-phone.us.js"></script>
+    <script src="./js/about.js"></script>
     <script src="./js/index.js"></script>
     <script src="./js/signup.js"></script>
 </body>

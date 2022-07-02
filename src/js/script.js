@@ -3,6 +3,10 @@ const x_button = document.querySelectorAll(".x-button");
 const grade_number = document.querySelectorAll(".grade-number");
 const student_table_name = document.querySelectorAll(".student-table-name");
 
+function toggleNoScrollBody() {
+    document.body.classList.toggle("no-scroll");
+}
+
 window.onload = function () {
     if (localStorage.getItem("dark-mode") == null) {
         localStorage.setItem("dark-mode", false);
@@ -13,6 +17,7 @@ window.onload = function () {
 
 x_button.forEach(x => {
     x.addEventListener("click", function () {
+        toggleNoScrollBody()
         let formdiv = x.parentElement.parentElement;
         let overlaydiv = x.parentElement.parentElement.parentElement.parentElement;
         formdiv.classList.toggle("active");
@@ -25,6 +30,7 @@ x_button.forEach(x => {
 });
 
 grade_number.forEach(x => {
+    toggleNoScrollBody();
     x.addEventListener("click", function () {
         document.querySelector("#modal-name-1").innerHTML = previousSiblingByClassName(x.parentElement, "student-name-case").children[0].innerHTML;
         document.querySelector("#modal-id").value = previousSiblingByClassName(x.parentElement, "assignment-id").value;
@@ -82,6 +88,7 @@ student_table_name.forEach(x => {
     x.addEventListener("click", function () {
         document.querySelector("#modal-id-2").value = x.parentNode.nextSibling.nextSibling.value;
         document.getElementById("overlay-modal-student").classList.toggle("disable");
+        toggleNoScrollBody();
         document.getElementById("edit-student").classList.toggle("active");
     });
 });
@@ -89,11 +96,13 @@ student_table_name.forEach(x => {
 document.getElementById("btn-bars-1").addEventListener("click", function () {
     document.getElementById("vertical-main-menu").classList.toggle("enable-b-1");
     document.getElementById("vertical-overlay").classList.toggle("disable");
+    toggleNoScrollBody()
 });
 
 document.getElementById("x-button-vertical-menu").addEventListener("click", function () {
     document.getElementById("vertical-main-menu").classList.toggle("enable-b-1");
     document.getElementById("vertical-overlay").classList.toggle("disable");
+    toggleNoScrollBody()
 });
 
 

@@ -59,7 +59,7 @@ if (isset($conn) && $role == "teacher") {
         <hr id="hr-vertical">
         <div class="lower-options">
             <a class="vertical-options <?php if ($active_vertical == 5) echo "active"; ?> a-dk v-o-gg" href="my-profile.php"><span class="vertical-options-icon vertical-options-icon-gg material-icons-outlined">account_box</span> My Profile</a>
-            <a class="vertical-options a-dk v-o-gg" href="#"><span class="vertical-options-icon vertical-options-icon-gg material-icons-outlined">info</span> About</a>
+            <a style="cursor: pointer" class="vertical-options a-dk v-o-gg" id="info-button-1"><span class="vertical-options-icon vertical-options-icon-gg material-icons-outlined">info</span> About</a>
             <a class="vertical-options a-dk v-o-fa" href="./controllers/logout.php"><i style="transform: rotate(180deg)" class="vertical-options-icon vertical-options-icon-fa fa-solid fa-arrow-right-from-bracket"></i> Log out</a>
         </div>
     </div>

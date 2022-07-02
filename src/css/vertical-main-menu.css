@@ -9,7 +9,7 @@
     bottom: 0;
     left: 0;
     width: 245px;
-    z-index: 3;
+    z-index: 2;
     background: rgb(18, 159, 123);
     background: linear-gradient(180deg, rgba(18, 159, 123, 1) 0%, rgba(10, 109, 85, 1) 100%);
     box-shadow: 6px 0px 25px rgba(0,0,0,0.1);
@@ -191,7 +191,13 @@
     background-color: #0f906f;
 }
 
-@media screen and (max-height: 750px) {
+@media screen and (max-width: 800px) {
+    .vertical-main-menu-f {
+        z-index: 4;
+    }
+}
+
+@media screen and (max-height: 590px) {
     .lower-options {
         bottom: unset;
         left: unset;

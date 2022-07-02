@@ -18,7 +18,9 @@
     <link rel="stylesheet" href="css/right-main.css">
     <link rel="stylesheet" href="css/navbar-phone.css">
     <link rel="stylesheet" href="css/my-profile.css">
+    <link rel="stylesheet" href="../css/about.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js" integrity="sha512-KZmyTq3PLx9EZl0RHShHQuXtrvdJ+m35tuOiwlcZfs/rE7NZv29ygNA8SFCkMXTnYZQK2OX0Gm2qKGfvWEtRXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://kit.fontawesome.com/0e82dbf83d.js" crossorigin="anonymous"></script>
 </head>
 <body class="a-dk">
+<?php include_once("./layout/info.php") ?>

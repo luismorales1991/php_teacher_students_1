@@ -1,7 +1,6 @@
-<?php
+<!-- <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0.4); z-index: 9999">
 
-?>
-
+</div> -->
 <h2 class="title-right-div a-dk h2-title-1"><i class="fa-solid fa-chart-pie"></i> Stadistics</h2>
 <hr style="margin-top: 10px">
 <div style="margin-top: 20px" class="grid-layout-2-1 grid-gap-1">

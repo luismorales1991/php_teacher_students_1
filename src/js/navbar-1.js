@@ -43,10 +43,6 @@ document.getElementById("switch-dark-mode-1").addEventListener("click", function
     darkMode();
 });
 
-document.getElementById("info-button-1").addEventListener("click", function () {
-    alert("Clicked!");
-});
-
 function generateRandomTitle() {
     var title = "";
 
