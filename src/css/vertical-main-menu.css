@@ -197,6 +197,7 @@
     }
 }
 
+
 @media screen and (max-height: 590px) {
     .lower-options {
         bottom: unset;
@@ -232,6 +233,10 @@
 }
 
 @media screen and (max-width: 850px) {
+    .lower-options {
+        bottom: 23%;
+    }
+
     .row-vertical {
         display: block;
         grid-template-columns: none;

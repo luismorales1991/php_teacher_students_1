@@ -882,6 +882,10 @@ textarea {
     .navbar {
         padding: 12px 0;
     }
+
+    .switch-dark-mode-text {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 560px) {
