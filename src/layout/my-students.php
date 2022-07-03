@@ -28,6 +28,7 @@ while ($row = $result->fetch_assoc()) {
     $count++;
 }
 
+
 $stmt->close();
 ?>
 

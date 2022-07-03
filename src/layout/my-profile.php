@@ -141,7 +141,7 @@ $images = [
                     </div>
                     <div style="margin-top: 20px">
                         <h5 class="a-dk to-white">Limit:</h5>
-                        <span><?= $oc ?> / </span><input class="a-dk" size="2" maxlength="2" required="required" type="text" name="occupancy" placeholder="1-30" value="<?= $lt ?>">
+                        <span class="to-white"><?= $oc ?> / </span><input class="a-dk" size="2" maxlength="2" required="required" type="text" name="occupancy" placeholder="1-30" value="<?= $lt ?>">
                     </div>
                     <div style="margin-top: 20px">
                         <h5 class="a-dk to-white">Description:</h5>
